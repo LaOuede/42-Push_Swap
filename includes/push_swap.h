@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/11 09:21:40 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/11 17:33:21 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum flag
 typedef struct s_stack
 {
 	int				index;
-	int				value;
+	int				number;
 	int				pos;
 	int				goal_pos;
 	int				cost_stack_a;
@@ -39,15 +39,19 @@ typedef struct s_stack
 	int				median_a;
 	int				median_b;
 	struct s_stack	*next;
+	struct s_stack	*previous;
 }					t_stack;
 
 /* ----------------PARSING---------------- */
 int		ft_isnumber(char *argv);
 t_stack	*ft_parse(int argc, char **argv);
+void	ft_parse_string(char *s, t_stack *stack);
+void	ft_parse_args(int argc, char **argv, t_stack *stack);
 
 /* ----------------LINKED LISTS---------------- */
 t_stack	*ft_create_element(int value);
 void	ft_free_stack(t_stack **stack);
+void	ft_del_first_node(t_stack **stack);
 void	ft_add_element_bottom(t_stack **stack, t_stack *element);
 
 /* ----------------MOVEMENTS---------------- */
