@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 07:44:26 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/11 17:30:21 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/11 17:42:13 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack	*ptr;
 
 	if (argc < 2)
 		ft_error("Error\nUsage: ./push_swap <arguments>");
@@ -23,11 +22,10 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		ft_error("Error\nUsage: ./push_swap <numbers>");
 	printf("\nList to sort = ");
-	ptr = stack_a;
-	while(ptr != NULL)
+	while(stack_a != NULL)
 	{
-		printf("%d ",ptr->number);
-		ptr = ptr->next;
+		printf("%d ",stack_a->number);
+		stack_a = stack_a->next;
 	}
 	printf("\n\n>>>>> Parsing successful! ✅<<<<<\n\n");
 	ft_free_stack(&stack_a);
