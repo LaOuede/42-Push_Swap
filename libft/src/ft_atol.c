@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 08:48:10 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/09 21:31:19 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/11 09:49:08 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ long	ft_atol(const char *str)
 			neg *= -1;
 		i++;
 	}
+	while (str[i] == '0' && str[i + 1] != '\0')
+		i++;
 	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + (str[i] - 48);

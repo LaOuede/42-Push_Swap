@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/10 16:23:21 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/11 09:44:54 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,19 @@ void	ft_add_element_bottom(t_stack **stack, t_stack *element)
 	while (last->next != NULL)
 		last = last->next;
 	last->next = element;
+}
+
+void	ft_free_stack(t_stack **stack)
+{
+	t_stack	*ptr;
+
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		ptr = (*stack)->next;
+		free(*stack);
+		*stack = ptr;
+	}
+	*stack = NULL;
 }
