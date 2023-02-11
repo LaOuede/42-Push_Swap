@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 07:44:26 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/11 17:42:13 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/11 17:43:09 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		ft_error("Error\nUsage: ./push_swap <numbers>");
 	printf("\nList to sort = ");
-	while(stack_a != NULL)
+	while (stack_a != NULL)
 	{
 		printf("%d ",stack_a->number);
 		stack_a = stack_a->next;
