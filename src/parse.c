@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 13:58:18 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 14:02:31 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	ft_check_duplicates(t_stack *stack)
 		while (element_b->next != NULL)
 		{
 			if (element_a->number == element_b->number)
-				ft_error("Error\nUsage: ./push_swap <duplicates>");
+				ft_error("Error\nUsage: ./push_swap <duplicates> ❌");
 			element_b = element_b->next;
 		}
 		if (element_b->next == NULL && element_a->number == element_b->number)
-			ft_error("Error\nUsage: ./push_swap <duplicates>");
+			ft_error("Error\nUsage: ./push_swap <duplicates> ❌");
 		element_a = element_a->next;
 	}
 }
