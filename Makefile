@@ -6,7 +6,7 @@
 #    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/12 14:09:15 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/02/12 15:19:07 by gwenolalero      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,21 @@ TEST1_ARGS = "3 1 2"
 TEST2_ARGS = 4 7 2
 TEST3_ARGS = -18 47 65
 TEST4_ARGS = 5 2 -3 
+
+#------------------------------------------------------------------------------#
+#                                   TOOLS                                      #
+#------------------------------------------------------------------------------#
+define HELP
+$Z---------------------------------------------------------------
+$YTools available$Z
+make checkup		$Y->$Z Run tests and norminette
+make help		$Y->$Z Display tools available
+make norm		$Y->$Z Run Norminette
+make pdf 		$Y->$Z Open the PDF subject
+make test		$Y->$Z Run a series of tests
+---------------------------------------------------------------
+endef
+export HELP
 
 #------------------------------------------------------------------------------#
 #                                VARIABLES                                     #
@@ -93,7 +108,8 @@ $(NAME): $(OBJS)
 	@echo "\n$W--------------------------- $Zlibft.a $W----------------------------"
 	@make -C $(LIBFT_DIR)
 	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
-	@echo "\n>>>>>>>>>>>>>>>>>>>>> $ZPUSH_SWAP is $Gready ✅$W <<<<<<<<<<<<<<<<<<<<"
+	@echo "\n>>>>>>>>>>>>>> $ZIf help is needed, type $Ymake help $W<<<<<<<<<<<<<<"
+	@echo "\n>>>>>>>>>>>>>>>>>>>> $ZPUSH_SWAP is $Gready ✅$W <<<<<<<<<<<<<<<<<<<<"
 
 # Create all files .o (object) from files .c (source code)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
@@ -122,6 +138,10 @@ fclean: clean
 re: fclean
 	@$(MAKE) all
 
+# Displays tools available
+help:
+	@echo "$$HELP"
+
 # For testing purposes
 test:
 	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YTESTING $W<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
@@ -136,7 +156,7 @@ test:
 	@echo "$W>>>>>>>>>>>>>>>>>>>>>>>>> $YEND TESTS ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 
 norm :
-	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE $W<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE $W<<<<<<<<<<<<<<<<<<<<<<<<<<$Z\n"
 	@norminette $(SRCS) $(HEADER) $(LIBFT_DIR)
 	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<<"
 
@@ -154,5 +174,9 @@ checkup:
 #	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YMEMORY ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 	@$(MAKE) norm
 
+# Opens the subject
+pdf:
+	@open https://cdn.intra.42.fr/pdf/pdf/66937/fr.subject.pdf
+
 # Avoids file-target name conflicts
-.PHONY: all dir clean fclean re test norm lsan checkup
+.PHONY: all dir clean fclean re test norm lsan checkup pdf help

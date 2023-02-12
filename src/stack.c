@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/12 12:37:55 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 15:02:35 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ t_stack	*ft_create_element(int nb)
 	new_element->median_a = -1;
 	new_element->median_b = -1;
 	new_element->next = NULL;
-	new_element->previous = NULL;
 	return (new_element);
 }
 
@@ -66,6 +65,25 @@ void	ft_free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
+
+/* void	ft_free_stack(t_stack *stack)
+{
+	int		i;
+	t_stack	*ptr;
+	t_stack	*delete;
+
+	if (!stack)
+		return ;
+	i = -1;
+	ptr = stack;
+	while (i++ < stack->size_total)
+	{
+		delete = ptr;
+		ptr = ptr->next;
+		free(delete);
+	}
+	free(stack);
+} */
 
 void	ft_del_first_node(t_stack **stack)
 {
