@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 15:03:00 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:24:38 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_parse_args(int argc, char **argv, t_stack *stack);
 t_stack	*ft_create_element(int value);
 void	ft_free_stack(t_stack **stack);
 //void	ft_free_stack(t_stack *stack);
-void	ft_del_first_node(t_stack **stack);
+void	ft_del_first_element(t_stack **stack);
 void	ft_add_element_bottom(t_stack **stack, t_stack *element);
 
 /* ----------------MOVEMENTS---------------- */

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 18:21:23 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:24:16 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ t_stack	*ft_parse(int argc, char **argv)
 	else if (argc > 2)
 		ft_parse_args(argc, argv, stack_parse);
 	ft_check_duplicates(stack_parse);
-	ft_del_first_node(&stack_parse);
+	ft_del_first_element(&stack_parse);
 	return (stack_parse);
 }
