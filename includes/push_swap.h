@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/11 17:33:21 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 12:37:06 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ typedef struct s_stack
 
 /* ----------------PARSING---------------- */
 int		ft_isnumber(char *argv);
+int		ft_stack_size(t_stack *stack);
 t_stack	*ft_parse(int argc, char **argv);
+void	ft_check_duplicates(t_stack *stack);
 void	ft_parse_string(char *s, t_stack *stack);
 void	ft_parse_args(int argc, char **argv, t_stack *stack);
 

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/11 17:28:36 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 12:37:55 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,23 @@ void	ft_del_first_node(t_stack **stack)
 	ptr = *stack;
 	*stack = (*stack)->next;
 	free(ptr);
+}
+
+int	ft_stack_size(t_stack *stack)
+{
+	int		size;
+	t_stack	*ptr;
+
+	size = 0;
+	ptr = stack;
+	if (!stack)
+		return (0);
+	while (ptr->next != NULL)
+	{
+		size++;
+		ptr = ptr->next;
+	}
+	if (ptr->next == NULL)
+		size++;
+	return (size);
 }
