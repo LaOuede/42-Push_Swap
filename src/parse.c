@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 14:25:37 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/12 18:07:59 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,10 @@ t_stack	*ft_parse(int argc, char **argv)
 	t_stack	*stack_parse;
 
 	stack_parse = ft_create_element(666);
-	if (!stack_parse)
-		ft_error("Error\n");
 	if (argc == 2)
 		ft_parse_string(argv[1], stack_parse);
 	else if (argc > 2)
 		ft_parse_args(argc, argv, stack_parse);
-	if (ft_stack_size(stack_parse) == 0)
-		ft_error("Error\nUsage: ./push_swap <numbers> ❌");
 	ft_check_duplicates(stack_parse);
 	ft_del_first_node(&stack_parse);
 	return (stack_parse);
