@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
+#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/12 18:15:27 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/02/13 15:07:08 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,9 @@ W = $(shell tput -Txterm setaf 7)
 TEST1_ARGS = "3 1 2"
 TEST2_ARGS = 4 7 2
 TEST3_ARGS = -18 47 65
-TEST4_ARGS = 5 2 -3 
+TEST4_ARGS = 5 2 -3
+TEST5_ARGS = 3 3 2
+TEST6_ARGS = 3 A 2
 
 #------------------------------------------------------------------------------#
 #                                   TOOLS                                      #
@@ -75,10 +77,16 @@ RM		=	rm -rf
 NAME		=	push_swap
 
 SRCS_DIR	=	./src/
-SRCS_LIST	=	parse.c \
-				push_swap.c \
+SRCS_LIST	=	algo_test.c \
+				main_parsing.c \
+				parse.c \
+				push.c \
+				reverse.c \
+				rotate.c \
 				stack.c \
+				swap.c \
 				utils.c \
+				utils_moves.c \
 				utils_parse.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
@@ -183,8 +191,19 @@ mem:
 	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YMEMORY $W<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	@echo "$W---------------------- $Z./push_swap 3 1 2 $W-----------------------"
 	@leaks -atExit -- ./$(NAME) $(TEST1_ARGS)
+	@echo "$W---------------------- $Z./push_swap 3 1 2 $W-----------------------"
+	@valgrind --leak-check=full ./$(NAME) $(TEST1_ARGS)
+	@echo "$W---------------------- $Z./push_swap 3 3 2 $W-----------------------"
+	@leaks -atExit -- ./$(NAME) $(TEST5_ARGS)
+	@echo "$W---------------------- $Z./push_swap 3 3 2 $W-----------------------"
+	@valgrind --leak-check=full ./$(NAME) $(TEST5_ARGS)
+	@echo "$W---------------------- $Z./push_swap 3 A 2 $W-----------------------"
+	@leaks -atExit -- ./$(NAME) $(TEST6_ARGS)
+	@echo "$W---------------------- $Z./push_swap 3 A 2 $W-----------------------"
+	@valgrind --leak-check=full ./$(NAME) $(TEST6_ARGS)
 	@echo "$W>>>>>>>>>>>>>>>>>>>>>>>>> $YEND TESTS ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 
+	valgrind --leak-check=full ./programme
 
 # Avoids file-target name conflicts
 .PHONY: all dir clean fclean re test norm lsan checkup pdf help mem

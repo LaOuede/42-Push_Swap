@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   utils_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 08:40:40 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 13:04:33 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/13 13:40:55 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_isnumber(char *argv)
+t_stack	*ft_stack_last(t_stack *stack)
 {
-	int	i;
+	if (!stack)
+		return (0);
+	while (stack->next != NULL)
+		stack = stack->next;
+	return (stack);
+}
 
-	i = 0;
-	if ((argv[i] == 43 || argv[i] == 45) && argv[i + 1] != '\0')
-		i++;
-	while (argv[i] && ft_isdigit(argv[i]) == 1)
-		i++;
-	if (ft_isdigit(argv[i]) == 0 && argv[i] != '\0')
-		return (F);
-	return (T);
+t_stack	*ft_stack_penultimate(t_stack *stack)
+{
+	if (!stack)
+		return (0);
+	while (stack->next && stack->next->next != NULL)
+		stack = stack->next;
+	return (stack);
 }

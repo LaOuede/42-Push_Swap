@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main_parsing                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 07:44:26 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 18:19:42 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/13 15:18:12 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 
 	if (argc < 2)
-		ft_error("Error\nUsage: ./push_swap <arguments> ❌");
+		ft_error("Error\nUsage: ./push_swap <arguments> ❌", &stack_a, 0);
 	stack_a = ft_parse(argc, argv);
-	tmp = stack_a;
 	printf("\nNumbers to sort = %d\n", ft_stack_size(stack_a));
+	tmp = stack_a;
 	printf("\nList to sort = ");
 	while (tmp != NULL)
 	{

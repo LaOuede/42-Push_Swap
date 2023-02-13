@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 08:40:40 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 13:04:33 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/13 14:23:16 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_isnumber(char *argv)
+void	ft_rotate(t_stack **stack)
 {
-	int	i;
+	t_stack	*ptr;
+	t_stack	*last;
 
-	i = 0;
-	if ((argv[i] == 43 || argv[i] == 45) && argv[i + 1] != '\0')
-		i++;
-	while (argv[i] && ft_isdigit(argv[i]) == 1)
-		i++;
-	if (ft_isdigit(argv[i]) == 0 && argv[i] != '\0')
-		return (F);
-	return (T);
+	ptr = *stack;
+	*stack = (*stack)->next;
+	last = ft_stack_last(*stack);
+	last->next = ptr;
+	ptr->next = NULL;
 }
+

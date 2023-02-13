@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 08:40:40 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 13:04:33 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
+/*   Updated: 2023/02/13 15:24:30 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_isnumber(char *argv)
+void	ft_push(t_stack **stack_from, t_stack **stack_to)
 {
-	int	i;
+	t_stack	*ptr;
 
-	i = 0;
-	if ((argv[i] == 43 || argv[i] == 45) && argv[i + 1] != '\0')
-		i++;
-	while (argv[i] && ft_isdigit(argv[i]) == 1)
-		i++;
-	if (ft_isdigit(argv[i]) == 0 && argv[i] != '\0')
-		return (F);
-	return (T);
+	if (!(*stack_from))
+		return ;
+	ptr = (*stack_from)->next;
+	(*stack_from)->next = *stack_to;
+	*stack_to = *stack_from;
+	*stack_from = ptr;
+	if (stack_from)
 }

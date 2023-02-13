@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 18:24:38 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/13 14:57:04 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,26 @@ typedef struct s_stack
 
 /* ----------------PARSING---------------- */
 int		ft_isnumber(char *argv);
-int		ft_stack_size(t_stack *stack);
-t_stack	*ft_parse(int argc, char **argv);
 void	ft_check_duplicates(t_stack *stack);
+t_stack	*ft_parse(int argc, char **argv);
 void	ft_parse_string(char *s, t_stack *stack);
 void	ft_parse_args(int argc, char **argv, t_stack *stack);
+int		ft_stack_size(t_stack *stack);
 
 /* ----------------LINKED LISTS---------------- */
+void	ft_add_element_bottom(t_stack **stack, t_stack *element);
+void	ft_del_first_element(t_stack **stack);
 t_stack	*ft_create_element(int value);
 void	ft_free_stack(t_stack **stack);
 //void	ft_free_stack(t_stack *stack);
-void	ft_del_first_element(t_stack **stack);
-void	ft_add_element_bottom(t_stack **stack, t_stack *element);
 
 /* ----------------MOVEMENTS---------------- */
+void	ft_push(t_stack **stack_from, t_stack **stack_to);
+void	ft_reverse(t_stack **stack);
+void	ft_rotate(t_stack **stack);
+t_stack	*ft_stack_last(t_stack *stack);
+t_stack	*ft_stack_penultimate(t_stack *stack);
+void	ft_swap(t_stack **stack);
 
 /* ----------------SORTING---------------- */
 int		main(int argc, char **argv);
@@ -64,8 +70,9 @@ int		main(int argc, char **argv);
 /* ----------------MAJOR_ALGORITHME---------------- */
 
 /* ----------------MINOR_ALGORITHME---------------- */
+void	ft_algo_test(t_stack **stack_a);
 
 /* ----------------UTILS---------------- */
-void	ft_error(char *error);
+void	ft_error(char *error, t_stack **stack, char **tab);
 
 #endif

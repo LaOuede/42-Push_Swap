@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   algo_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 08:40:40 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 13:04:33 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/13 10:38:05 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/13 14:57:35 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_isnumber(char *argv)
+void	ft_algo_test(t_stack **stack_a)
 {
-	int	i;
-
-	i = 0;
-	if ((argv[i] == 43 || argv[i] == 45) && argv[i + 1] != '\0')
-		i++;
-	while (argv[i] && ft_isdigit(argv[i]) == 1)
-		i++;
-	if (ft_isdigit(argv[i]) == 0 && argv[i] != '\0')
-		return (F);
-	return (T);
+	ft_reverse(stack_a);
+	//ft_rotate(stack_a);
+	//ft_swap(stack_a);
 }

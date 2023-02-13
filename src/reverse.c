@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_parse.c                                      :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 08:40:40 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 13:04:33 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/13 13:47:26 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_isnumber(char *argv)
+void	ft_reverse(t_stack **stack)
 {
-	int	i;
+	t_stack	*head;
+	t_stack	*last;
+	t_stack	*penultimate;
 
-	i = 0;
-	if ((argv[i] == 43 || argv[i] == 45) && argv[i + 1] != '\0')
-		i++;
-	while (argv[i] && ft_isdigit(argv[i]) == 1)
-		i++;
-	if (ft_isdigit(argv[i]) == 0 && argv[i] != '\0')
-		return (F);
-	return (T);
+	last = ft_stack_last(*stack);
+	penultimate = ft_stack_penultimate(*stack);
+	head = *stack;
+	*stack = last;
+	(*stack)->next = head;
+	penultimate->next = NULL;
 }

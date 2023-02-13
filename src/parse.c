@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/12 18:24:16 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/13 10:03:20 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	ft_check_duplicates(t_stack *stack)
 		while (element_b->next != NULL)
 		{
 			if (element_a->number == element_b->number)
-				ft_error("Error\nUsage: ./push_swap <duplicates> ❌");
+				ft_error("Error\nUsage: ./push_swap <duplicates> ❌", &stack, 0);
 			element_b = element_b->next;
 		}
 		if (element_b->next == NULL && element_a->number == element_b->number)
-			ft_error("Error\nUsage: ./push_swap <duplicates> ❌");
+			ft_error("Error\nUsage: ./push_swap <duplicates> ❌", &stack, 0);
 		element_a = element_a->next;
 	}
 }
@@ -42,10 +42,10 @@ void	ft_parse_args(int argc, char **argv, t_stack *stack)
 	while (i < argc)
 	{
 		if (ft_isnumber(argv[i]) == F)
-			ft_error("Error\nUsage: ./push_swap <numbers> ❌");
+			ft_error("Error\nUsage: ./push_swap <numbers> ❌", &stack, 0);
 		nb = ft_atol(argv[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			ft_error("Error\nUsage: ./push_swap <integers> ❌");
+			ft_error("Error\nUsage: ./push_swap <integers> ❌", &stack, 0);
 		ft_add_element_bottom(&stack, ft_create_element((int)nb));
 		i++;
 	}
@@ -60,14 +60,14 @@ void	ft_parse_string(char *s, t_stack *stack)
 	tab_nb = ft_split(s, ' ');
 	i = 0;
 	if (tab_nb[i] == NULL)
-		ft_error("Error\nUsage: ./push_swap <numbers> ❌");
+		ft_error("Error\nUsage: ./push_swap <numbers> ❌", &stack, tab_nb);
 	while (tab_nb[i])
 	{	
 		if (ft_isnumber(tab_nb[i]) == F)
-			ft_error("Error\nUsage: ./push_swap <numbers> ❌");
+			ft_error("Error\nUsage: ./push_swap <numbers> ❌", &stack, tab_nb);
 		nb = ft_atol(tab_nb[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
-			ft_error("Error\nUsage: ./push_swap <integers> ❌");
+			ft_error("Error\nUsage: ./push_swap <integers> ❌", &stack, tab_nb);
 		ft_add_element_bottom(&stack, ft_create_element((int)nb));
 		i++;
 	}
@@ -78,7 +78,7 @@ t_stack	*ft_parse(int argc, char **argv)
 {
 	t_stack	*stack_parse;
 
-	stack_parse = ft_create_element(666);
+	stack_parse = ft_create_element(0);
 	if (argc == 2)
 		ft_parse_string(argv[1], stack_parse);
 	else if (argc > 2)
