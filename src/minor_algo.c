@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   minor_algo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/14 11:35:31 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/13 10:38:05 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/14 15:16:12 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_push(t_stack **from, t_stack **to)
+/* void	ft_minor_algo(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*ptr;
-
-	if (!(*from))
-		return ;
-	ptr = (*from)->next;
-	(*from)->next = *to;
-	*to = *from;
-	*from = ptr;
-}
+	ft_reverse(stack_a);
+	//ft_rotate(stack_a);
+	//ft_swap(stack_a);
+} */

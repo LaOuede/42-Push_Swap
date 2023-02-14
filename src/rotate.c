@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 14:23:16 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:36:43 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void	ft_rotate(t_stack **stack)
 	last->next = ptr;
 	ptr->next = NULL;
 }
-

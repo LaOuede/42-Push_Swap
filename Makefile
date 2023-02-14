@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/13 15:07:08 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/02/14 15:25:42 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,12 +77,14 @@ RM		=	rm -rf
 NAME		=	push_swap
 
 SRCS_DIR	=	./src/
-SRCS_LIST	=	algo_test.c \
-				main_parsing.c \
+SRCS_LIST	=	index.c \
+				main.c \
+				minor_algo.c \
 				parse.c \
 				push.c \
 				reverse.c \
 				rotate.c \
+				sort.c \
 				stack.c \
 				swap.c \
 				utils.c \

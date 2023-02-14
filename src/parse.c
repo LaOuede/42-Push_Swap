@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 10:03:20 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:23:30 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ t_stack	*ft_parse(int argc, char **argv)
 		ft_parse_args(argc, argv, stack_parse);
 	ft_check_duplicates(stack_parse);
 	ft_del_first_element(&stack_parse);
+	stack_parse->size_total = ft_stack_size(stack_parse);
 	return (stack_parse);
 }

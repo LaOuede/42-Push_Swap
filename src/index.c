@@ -1,20 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_test.c                                        :+:      :+:    :+:   */
+/*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 10:38:05 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 14:57:35 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/14 11:39:22 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/14 14:24:27 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_algo_test(t_stack **stack_a)
+void	ft_index(t_stack *stack, int size)
 {
-	ft_reverse(stack_a);
-	//ft_rotate(stack_a);
-	//ft_swap(stack_a);
+	int		i;
+	t_stack	*max;
+	t_stack	*ptr;
+
+	max = NULL;
+	while (size > 0)
+	{
+		ptr = stack;
+		i = INT_MIN;
+		while (ptr != NULL)
+		{
+			if ((i <= ptr->number) && ptr->index == -1)
+			{
+				i = ptr->number;
+				max = ptr;
+			}
+			ptr = ptr->next;
+		}
+		max->index = size;
+		size--;
+	}
 }
