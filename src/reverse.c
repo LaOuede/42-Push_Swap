@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/13 13:47:26 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/15 08:41:43 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_reverse(t_stack **stack)
+void	ft_reverse(t_stack **stack, char *move)
 {
 	t_stack	*head;
 	t_stack	*last;
@@ -24,4 +24,5 @@ void	ft_reverse(t_stack **stack)
 	*stack = last;
 	(*stack)->next = head;
 	penultimate->next = NULL;
+	printf("%s\n", move);
 }

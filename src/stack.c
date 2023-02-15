@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/14 13:50:14 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:41:05 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,21 @@ void	ft_free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
+void	ft_free_move(t_stack **stack)
+{
+	t_stack	*ptr;
+
+	if (!stack || !*stack)
+		return ;
+	while (*stack)
+	{
+		ptr = (*stack)->next;
+		free(*stack);
+		*stack = ptr;
+	}
+	*stack = NULL;
+}
+
 /* void	ft_free_stack(t_stack *stack)
 {
 	int		i;
@@ -96,13 +111,13 @@ void	ft_del_first_element(t_stack **stack)
 	free(ptr);
 }
 
-int	ft_stack_size(t_stack *stack)
+int	ft_stack_size(t_stack **stack)
 {
 	int		size;
 	t_stack	*ptr;
 
 	size = 0;
-	ptr = stack;
+	ptr = *stack;
 	if (!stack)
 		return (0);
 	while (ptr->next != NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:17:25 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/14 16:35:55 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:18:42 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ int	ft_check_sorted(t_stack *stack_a)
 	return (T);
 }
 
-void	ft_sort(t_stack *stack_a, t_stack *stack_b)
+void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
+	t_move	*move;
+
 	(void)stack_b;
-	if ((stack_a->size_total == 2) && (ft_check_sorted(stack_a) == F))
-		ft_sa(&stack_a);
+	move = ft_write_moves();
+	if (((*stack_a)->size_total == 2) && (ft_check_sorted(*stack_a) == F))
+		ft_swap(stack_a, move->swap_a);
+	else if (((*stack_a)->size_total == 3) && (ft_check_sorted(*stack_a) == F))
+		ft_minor_algo(stack_a, move);
+	free(move);
 }
