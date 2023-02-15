@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/15 08:20:13 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/15 13:16:13 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,21 @@ t_stack	*ft_stack_penultimate(t_stack *stack)
 		stack = stack->next;
 	return (stack);
 }
+
+/* int	ft_find_index_max(t_stack *stack)
+{
+	int	max;
+	int	size;
+
+	max = 0;
+	size = stack->size_total;
+	while (stack != NULL)
+	{
+		if (stack->index == size)
+		{
+			max = stack->index;
+		}
+		stack = stack->next;
+	}
+	return (max);
+} */

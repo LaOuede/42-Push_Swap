@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
+#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/14 15:25:42 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/02/15 13:16:36 by gwenolalero      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,6 @@ NAME		=	push_swap
 SRCS_DIR	=	./src/
 SRCS_LIST	=	index.c \
 				main.c \
-				minor_algo.c \
 				parse.c \
 				push.c \
 				reverse.c \
