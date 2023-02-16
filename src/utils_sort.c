@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 11:21:57 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 14:39:06 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:05:00 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_pre_sorting(t_stack *stack, t_move *move)
 
 	push = 0;
 	median = (stack->size_total / 2);
-	printf("median = %d\n", median);
 	while (push < median)
 	{
 		if (stack->a->index <= median)

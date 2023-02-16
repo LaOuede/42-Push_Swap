@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:17:25 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 14:39:27 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:04:31 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 void	ft_five_algo(t_stack *stack, t_move *move)
 {
 	ft_pre_sorting(stack, move);
-	printf("pre sorting ok\n");
 	if (ft_lst_size(&stack->a) == 3)
-	{
 		ft_three_algo(stack, &stack->a, move);
-		printf("3 algo ok\n");
-	}
-/* 	if (stack->b->next == NULL)
-		ft_push(&stack->b, &stack->a, move->push_a); */
 	else if (stack->a->index > stack->a->next->index)
 		ft_swap(&stack->a, move->swap_a);
 	if (stack->b->index < stack->b->next->index)
