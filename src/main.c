@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 07:44:26 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/15 09:48:51 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/16 15:36:34 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 /*Main Parsing*/
 /* int	main(int argc, char **argv)
 {
-	t_stack	*tmp;
-	t_stack	*stack_a;
+	t_lst	*tmp;
+	t_stack	*stack;
 
 	if (argc < 2)
-		ft_error("Error\nUsage: ./push_swap <arguments> ❌", &stack_a, 0);
-	stack_a = ft_parse(argc, argv);
-	printf("\nNumbers to sort = %d\n", stack_a->size_total);
-	tmp = stack_a;
+		ft_error("Error\nUsage: ./push_swap <arguments> ❌", &stack, 0);
+	stack = ft_parse(argc, argv);
+	printf("\nNumbers to sort = %d\n", stack->size_total);
+	tmp = stack->a;
 	printf("\nList to sort = ");
 	while (tmp != NULL)
 	{
@@ -30,29 +30,29 @@
 		tmp = tmp->next;
 	}
 	printf("\n\n>>>>> Parsing successful!✅ <<<<<\n\n");
-	ft_free_stack(&stack_a);
+	ft_free_stack(&stack);
 	return (0);
 } */
 
 /*main index*/
 /* int	main(int argc, char **argv)
 {
-	t_stack	*tmp;
-	t_stack	*stack_a;
+	t_lst	*tmp;
+	t_stack	*stack;
 
 	if (argc < 2)
-		ft_error("Error\nUsage: ./push_swap <arguments> ❌", &stack_a, 0);
-	stack_a = ft_parse(argc, argv);
-	printf("\nNumbers to sort = %d\n", stack_a->size_total);
-	ft_index(stack_a,  stack_a->size_total);
-	tmp = stack_a;
+		ft_error("Error\nUsage: ./push_swap <arguments> ❌", &stack, 0);
+	stack = ft_parse(argc, argv);
+	printf("\nNumbers to sort = %d\n", stack->size_total);
+	ft_index(stack->a, stack->size_total);
+	tmp = stack->a;
 	printf("\nList to sort = ");
 	while (tmp != NULL)
 	{
 		printf("%d ", tmp->number);
 		tmp = tmp->next;
 	}
-	tmp = stack_a;
+	tmp = stack->a;
 	printf("\nList index   = ");
 	while (tmp != NULL)
 	{
@@ -60,26 +60,27 @@
 		tmp = tmp->next;
 	}
 	printf("\n\n>>>>> Index completed!✅ <<<<<\n\n");
-	ft_free_stack(&stack_a);
+	ft_free_stack(&stack);
 	return (0);
 } */
 
 /*Main Move*/
 int	main(int argc, char **argv)
 {
-	t_stack	*tmp;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_lst	*tmp;
+	t_stack	*stack;
 
 	if (argc < 2)
-		ft_error("Error\nUsage: ./push_swap <arguments> ❌", &stack_a, 0);
-	stack_a = ft_parse(argc, argv);
-	stack_b = NULL;
-	ft_index(stack_a, stack_a->size_total);
-	printf("\nNumbers to sort = %d\n", stack_a->size_total);
+	{
+		write(STDERR_FILENO, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+	stack = ft_parse(argc, argv);
+	printf("\nNumbers to sort = %d\n", stack->size_total);
+	ft_index(stack->a, stack->size_total);
 	printf("\nList of movements =\n");
-	ft_sort(&stack_a, &stack_b);
-	tmp = stack_a;
+	ft_sort(stack);
+	tmp = stack->a;
 	printf("\nStack_a = ");
 	while (tmp != NULL)
 	{
@@ -88,15 +89,16 @@ int	main(int argc, char **argv)
 	}
 	printf("\n");
 	printf("\nStack_b = ");
-	tmp = stack_b;
+	tmp = stack->b;
 	while (tmp != NULL)
 	{
 		printf("%d ", tmp->number);
 		tmp = tmp->next;
 	}
 	printf("\n\n>>>>> List sorted successfuly!✅ <<<<<\n\n");
-	ft_free_stack(&stack_a);
-	ft_free_stack(&stack_b);
+	ft_free_lst(&stack->a);
+	ft_free_lst(&stack->a);
+	ft_free_stack(&stack);
 	return (0);
 }
 

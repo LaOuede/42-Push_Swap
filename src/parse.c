@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/15 09:40:40 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/16 15:06:53 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_check_duplicates(t_stack *stack)
+void	ft_check_duplicates(t_stack *stack, t_lst *a)
 {
-	t_stack	*element_a;
-	t_stack	*element_b;
+	t_lst	*element_a;
+	t_lst	*element_b;
 
-	element_a = stack->next;
+	element_a = a->next;
 	while (element_a->next != NULL)
 	{
 		element_b = element_a->next;
@@ -46,7 +46,8 @@ void	ft_parse_args(int argc, char **argv, t_stack *stack)
 		nb = ft_atol(argv[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			ft_error("Error\nUsage: ./push_swap <integers> ❌", &stack, 0);
-		ft_add_element_bottom(&stack, ft_create_element((int)nb));
+		ft_add_element_bottom(&stack->a, ft_create_element((int)nb));
+		stack->size_total++;
 		i++;
 	}
 }
@@ -68,7 +69,8 @@ void	ft_parse_string(char *s, t_stack *stack)
 		nb = ft_atol(tab_nb[i]);
 		if (nb > INT_MAX || nb < INT_MIN)
 			ft_error("Error\nUsage: ./push_swap <integers> ❌", &stack, tab_nb);
-		ft_add_element_bottom(&stack, ft_create_element((int)nb));
+		ft_add_element_bottom(&stack->a, ft_create_element((int)nb));
+		stack->size_total++;
 		i++;
 	}
 	ft_free_tab(tab_nb);
@@ -78,13 +80,12 @@ t_stack	*ft_parse(int argc, char **argv)
 {
 	t_stack	*stack_parse;
 
-	stack_parse = ft_create_element(0);
+	stack_parse = ft_create_stack();
 	if (argc == 2)
 		ft_parse_string(argv[1], stack_parse);
 	else if (argc > 2)
 		ft_parse_args(argc, argv, stack_parse);
-	ft_check_duplicates(stack_parse);
-	ft_del_first_element(&stack_parse);
-	stack_parse->size_total = ft_stack_size(&stack_parse);
+	if (stack_parse->size_total > 1)
+		ft_check_duplicates(stack_parse, stack_parse->a);
 	return (stack_parse);
 }

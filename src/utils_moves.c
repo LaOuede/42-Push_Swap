@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/15 13:16:13 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/16 12:50:38 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,36 @@ t_move	*ft_write_moves(void)
 	return (moves);
 }
 
-t_stack	*ft_stack_last(t_stack *stack)
+t_lst	*ft_lst_last(t_lst *lst)
 {
-	if (!stack)
+	if (!lst)
 		return (0);
-	while (stack->next != NULL)
-		stack = stack->next;
-	return (stack);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
-t_stack	*ft_stack_penultimate(t_stack *stack)
+t_lst	*ft_lst_penultimate(t_lst *lst)
 {
-	if (!stack)
+	if (!lst)
 		return (0);
-	while (stack->next && stack->next->next != NULL)
-		stack = stack->next;
-	return (stack);
+	while (lst->next && lst->next->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
-/* int	ft_find_index_max(t_stack *stack)
+int	ft_find_index_max(t_lst *lst)
 {
 	int	max;
-	int	size;
 
 	max = 0;
-	size = stack->size_total;
-	while (stack != NULL)
+	while (lst != NULL)
 	{
-		if (stack->index == size)
+		if (lst->index > max)
 		{
-			max = stack->index;
+			max = lst->index;
 		}
-		stack = stack->next;
+		lst = lst->next;
 	}
 	return (max);
-} */
+}

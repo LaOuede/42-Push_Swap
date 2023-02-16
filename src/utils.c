@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:23:42 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/15 08:18:34 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/16 11:12:50 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_error(char *error, t_stack **stack, char **tab)
 {
+	if ((*stack)->a)
+		ft_free_lst(&(*stack)->a);
+	if ((*stack)->b)
+		ft_free_lst(&(*stack)->b);
 	if (stack)
 		ft_free_stack(stack);
 	if (tab)

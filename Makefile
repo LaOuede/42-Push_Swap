@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
+#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/15 13:16:36 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/02/16 13:00:45 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,10 +52,11 @@ define HELP
 $Z---------------------------------------------------------------
 $YTools available$Z
 make checkup		$Y->$Z Run tests and norminette
+make eval		$Y->$Z Open evaluation sheet
 make help		$Y->$Z Display tools available
 make mem		$Y->$Z Run test with leaks -atExit command
 make norm		$Y->$Z Run Norminette
-make pdf 		$Y->$Z Open the PDF subject
+make pdf 		$Y->$Z Open PDF subject
 make test		$Y->$Z Run a series of tests
 ---------------------------------------------------------------
 endef
@@ -88,7 +89,8 @@ SRCS_LIST	=	index.c \
 				swap.c \
 				utils.c \
 				utils_moves.c \
-				utils_parse.c
+				utils_parse.c \
+				utils_sort.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJS_DIR	=	./obj/
@@ -188,6 +190,9 @@ checkup:
 pdf:
 	@open https://cdn.intra.42.fr/pdf/pdf/66937/fr.subject.pdf
 
+eval:
+	@echo https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
+
 mem:
 	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YMEMORY $W<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	@echo "$W---------------------- $Z./push_swap 3 1 2 $W-----------------------"
@@ -207,4 +212,4 @@ mem:
 	valgrind --leak-check=full ./programme
 
 # Avoids file-target name conflicts
-.PHONY: all dir clean fclean re test norm lsan checkup pdf help mem
+.PHONY: all dir clean fclean re test norm lsan checkup pdf help mem eval

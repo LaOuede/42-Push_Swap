@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse.c                                          :+:      :+:    :+:   */
+/*   utils_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 10:30:27 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/16 11:21:57 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/16 14:39:06 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_reverse(t_lst **lst, char *move)
+void	ft_pre_sorting(t_stack *stack, t_move *move)
 {
-	t_lst	*head;
-	t_lst	*last;
-	t_lst	*penultimate;
+	int	push;
+	int	median;
 
-	last = ft_lst_last(*lst);
-	penultimate = ft_lst_penultimate(*lst);
-	head = *lst;
-	*lst = last;
-	(*lst)->next = head;
-	penultimate->next = NULL;
-	printf("%s\n", move);
+	push = 0;
+	median = (stack->size_total / 2);
+	printf("median = %d\n", median);
+	while (push < median)
+	{
+		if (stack->a->index <= median)
+		{
+			ft_push(&stack->a, &stack->b, move->push_b);
+				push++;
+		}
+		else
+			ft_rotate(&stack->a, move->rotate_a);
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/15 09:40:15 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/16 12:44:09 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,17 @@ typedef struct s_move
 	struct s_move	*next;
 }					t_move;
 
-/* typedef struct s_lst
+typedef struct s_lst
 {
 	int				index;
 	int				number;
 	struct s_lst	*next;
-}					t_lst; */
+}					t_lst;
 
 typedef struct s_stack
 {
-/* 	t_lst			*a;
-	t_lst			*b; */
-	int				index;
-	int				number;
+	t_lst			*a;
+	t_lst			*b;
 	int				pos;
 	int				goal_pos;
 	int				cost_stack_a;
@@ -68,42 +66,48 @@ typedef struct s_stack
 }					t_stack;
 
 /* ----------------INDEX---------------- */
-void	ft_index(t_stack *stack, int size);
+void	ft_index(t_lst *a, int size);
 
 /* ----------------PARSING---------------- */
 int		ft_isnumber(char *argv);
-void	ft_check_duplicates(t_stack *stack);
+void	ft_check_duplicates(t_stack *stack,t_lst *a);
 t_stack	*ft_parse(int argc, char **argv);
 void	ft_parse_string(char *s, t_stack *stack);
 void	ft_parse_args(int argc, char **argv, t_stack *stack);
 int		ft_stack_size(t_stack **stack);
 
 /* ----------------LINKED LISTS---------------- */
-void	ft_add_element_bottom(t_stack **stack, t_stack *element);
-void	ft_del_first_element(t_stack **stack);
-t_stack	*ft_create_element(int value);
+void	ft_add_element_bottom(t_lst **a, t_lst *element);
+//void	ft_del_first_element(t_lst **a);
+t_stack	*ft_create_stack(void);
+t_lst	*ft_create_element(int value);
 void	ft_free_stack(t_stack **stack);
 //void	ft_free_stack(t_stack *stack);
+void	ft_lst_clear(t_lst **lst, void (*del)(void *));
+void	ft_free_lst(t_lst **lst);
+int		ft_lst_size(t_lst **lst);
 
 /* ----------------MOVEMENTS---------------- */
-void	ft_push(t_stack **from, t_stack **to, char *move);
-void	ft_reverse(t_stack **stack, char *move);
-void	ft_rotate(t_stack **stack, char *move);
-t_stack	*ft_stack_last(t_stack *stack);
-t_stack	*ft_stack_penultimate(t_stack *stack);
-void	ft_swap(t_stack **stack, char *move);
+void	ft_push(t_lst **from, t_lst **to, char *move);
+void	ft_reverse(t_lst **lst, char *move);
+void	ft_rotate(t_lst **lst, char *move);
+t_lst	*ft_lst_last(t_lst *stack);
+t_lst	*ft_lst_penultimate(t_lst *lst);
+void	ft_swap(t_lst **lst, char *move);
 t_move	*ft_write_moves(void);
 
 /* ----------------SORTING---------------- */
-int		ft_check_sorted(t_stack *stack_a);
+int		ft_check_sorted(t_lst *lst);
 int		main(int argc, char **argv);
 
-/* ----------------MAJOR_ALGORITHME---------------- */
+/* ----------------FIVE_ALGORITHM---------------- */
+void	ft_five_algo(t_stack *stack, t_move *move);
+void	ft_pre_sorting(t_stack *stack, t_move *move);
 
-/* ----------------MINOR_ALGORITHME---------------- */
-void	ft_sort(t_stack **stack_a, t_stack **stack_b);
-int		ft_find_index_max(t_stack *stack);
-void	ft_minor_algo(t_stack **stack_a, t_move *move);
+/* ----------------THREE_ALGORITHM---------------- */
+void	ft_sort(t_stack *stack);
+int		ft_find_index_max(t_lst *lst);
+void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move);
 
 /* ----------------UTILS---------------- */
 void	ft_error(char *error, t_stack **stack, char **tab);
