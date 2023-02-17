@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 12:48:22 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:49:52 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	ft_pre_sorting(t_stack *stack, t_move *move);
 /* ----------------THREE_ALGORITHM---------------- */
 void	ft_sort(t_stack *stack);
 int		ft_find_index_max(t_lst *lst);
+int		ft_find_index_min(t_lst *lst);
 void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move);
 
 /* ----------------BIG_ALGORITHM---------------- */

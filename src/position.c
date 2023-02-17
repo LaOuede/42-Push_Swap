@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:19:10 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 13:03:02 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:00:28 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ void	ft_find_goal_pos(t_stack *stack)
 {
 	t_lst	*lst_a;
 	t_lst	*lst_b;
-	int		goal_pos;
 	int		goal_index;
 
 	lst_a = stack->a;
 	lst_b = stack->b;
-	goal_index = ft_find_index_max(stack->a);
 	while (lst_b)
 	{
+		goal_index = ft_find_index_min(stack->a);
+		if (lst_b->index < goal_index)
+			lst_b->goal_pos = lst_a->pos;
 		while (lst_a)
 		{
-			if ((lst_a->index > lst_b->index && lst_a->index < goal_index)
-				|| (lst_a->index < lst_b->index))
+			if (lst_b->index > lst_a->index && lst_b->index > goal_index)
 			{
 				goal_index = lst_a->index;
-				goal_pos = lst_a->pos;
+				lst_b->goal_pos = lst_a->next->pos;
 			}
 			lst_a = lst_a->next;
 		}
-			lst_b->goal_pos = goal_pos;
-			lst_b = lst_b->next;
+		lst_a = stack->a;
+		lst_b = lst_b->next;
 	}
 }
 
@@ -56,9 +56,6 @@ void	ft_get_pos(t_lst *lst)
 
 void	ft_position(t_stack *stack)
 {
-	t_lst	*ptr;
-
-	ptr = stack->b;
 	ft_get_pos(stack->a);
 	ft_get_pos(stack->b);
 	ft_find_goal_pos(stack);

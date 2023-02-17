@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_algo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:37:39 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 13:08:24 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:00:06 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_bring_b_back(t_stack *stack, t_move *move)
 {
 	(void) move;
 	ft_position(stack);
-	ft_push(&stack->b, &stack->a, move->push_a);
 //	ft_move_cost(stack->b);
 }
 
