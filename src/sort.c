@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:17:25 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 10:40:08 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:16:32 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move)
 	if ((*lst_a)->next->next->index == max
 		&& (*lst_a)->index > (*lst_a)->next->index)
 		ft_swap(&(*lst_a), move->swap_a);
+	printf("\n>>>>>> Three algo ok ✅ <<<<<<\n\n");
 }
 
 int	ft_check_sorted(t_lst *lst)

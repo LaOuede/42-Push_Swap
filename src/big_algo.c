@@ -6,22 +6,29 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:37:39 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 16:00:06 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/17 17:24:20 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* void	ft_move_cost(t_lst *lst)
-{
-	
-} */
+/*
+TO DO :
+	* ft_nb_actions
+	* ft_efficient_move
+		* ft_move (code all moves with actions)
+	* rotate a until sorted
+*/
 
 void	ft_bring_b_back(t_stack *stack, t_move *move)
 {
 	(void) move;
 	ft_position(stack);
-//	ft_move_cost(stack->b);
+	ft_push(&stack->b, &stack->a, move->push_a);
+	ft_position(stack);
+		/* ft_nb actions(stack->b);
+		gest cost for each numbers
+		ft_move; */
 }
 
 void	ft_pre_sorting_big(t_stack *stack, t_move *move)
@@ -51,6 +58,7 @@ void	ft_pre_sorting_big(t_stack *stack, t_move *move)
 				ft_rotate(&stack->a, move->rotate_a);
 		}
 	}
+	printf("\n>>>>> Pre-sorting ok ✅ <<<<<<\n\n");
 }
 
 void	ft_big_algo(t_stack *stack, t_move *move)
