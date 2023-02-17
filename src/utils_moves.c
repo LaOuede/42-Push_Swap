@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 12:50:38 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:27:47 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,4 @@ t_lst	*ft_lst_penultimate(t_lst *lst)
 	while (lst->next && lst->next->next != NULL)
 		lst = lst->next;
 	return (lst);
-}
-
-int	ft_find_index_max(t_lst *lst)
-{
-	int	max;
-
-	max = 0;
-	while (lst != NULL)
-	{
-		if (lst->index > max)
-		{
-			max = lst->index;
-		}
-		lst = lst->next;
-	}
-	return (max);
 }

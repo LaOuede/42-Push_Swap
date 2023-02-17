@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/16 11:35:03 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:52:53 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_stack	*ft_create_stack(void)
 	new_stack = ft_calloc(sizeof * new_stack, 1);
 	if (!new_stack)
 		return (NULL);
-	new_stack->pos = -1;
-	new_stack->goal_pos = -1;
 	new_stack->cost_stack_a = -1;
 	new_stack->cost_stack_b = -1;
 	new_stack->size_a = -1;
@@ -41,6 +39,8 @@ t_lst	*ft_create_element(int nb)
 		return (NULL);
 	new_element->index = -1;
 	new_element->number = nb;
+	new_element->pos = -1;
+	new_element->goal_pos = -1;
 	new_element->next = NULL;
 	return (new_element);
 }

@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 12:44:09 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 12:48:22 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_lst
 {
 	int				index;
 	int				number;
+	int				pos;
+	int				goal_pos;
 	struct s_lst	*next;
 }					t_lst;
 
@@ -52,8 +54,6 @@ typedef struct s_stack
 {
 	t_lst			*a;
 	t_lst			*b;
-	int				pos;
-	int				goal_pos;
 	int				cost_stack_a;
 	int				cost_stack_b;
 	int				size_a;
@@ -70,7 +70,7 @@ void	ft_index(t_lst *a, int size);
 
 /* ----------------PARSING---------------- */
 int		ft_isnumber(char *argv);
-void	ft_check_duplicates(t_stack *stack,t_lst *a);
+void	ft_check_duplicates(t_stack *stack, t_lst *a);
 t_stack	*ft_parse(int argc, char **argv);
 void	ft_parse_string(char *s, t_stack *stack);
 void	ft_parse_args(int argc, char **argv, t_stack *stack);
@@ -108,6 +108,15 @@ void	ft_pre_sorting(t_stack *stack, t_move *move);
 void	ft_sort(t_stack *stack);
 int		ft_find_index_max(t_lst *lst);
 void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move);
+
+/* ----------------BIG_ALGORITHM---------------- */
+void	ft_big_algo(t_stack *stack, t_move *move);
+void	ft_pre_sorting_big(t_stack *stack, t_move *move);
+void	ft_bring_b_back(t_stack *stack, t_move *move);
+void	ft_get_pos(t_lst *lst);
+void	ft_position(t_stack *stack);
+void	ft_find_goal_pos(t_stack *stack);
+void	ft_move_cost(t_lst *lst);
 
 /* ----------------UTILS---------------- */
 void	ft_error(char *error, t_stack **stack, char **tab);

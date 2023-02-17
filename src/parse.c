@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 15:06:53 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/17 08:31:36 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	ft_check_duplicates(t_stack *stack, t_lst *a)
 {
-	t_lst	*element_a;
-	t_lst	*element_b;
+	t_lst	*node_1;
+	t_lst	*node_2;
 
-	element_a = a->next;
-	while (element_a->next != NULL)
+	node_1 = a;
+	while (node_1->next != NULL)
 	{
-		element_b = element_a->next;
-		while (element_b->next != NULL)
+		node_2 = node_1->next;
+		while (node_2->next != NULL)
 		{
-			if (element_a->number == element_b->number)
+			if (node_1->number == node_2->number)
 				ft_error("Error\nUsage: ./push_swap <duplicates> ❌", &stack, 0);
-			element_b = element_b->next;
+			node_2 = node_2->next;
 		}
-		if (element_b->next == NULL && element_a->number == element_b->number)
+		if (node_2->next == NULL && node_1->number == node_2->number)
 			ft_error("Error\nUsage: ./push_swap <duplicates> ❌", &stack, 0);
-		element_a = element_a->next;
+		node_1 = node_1->next;
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:17:25 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 17:04:31 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/17 10:40:08 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move)
 		ft_rotate(&(*lst_a), move->rotate_a);
 	if ((*lst_a)->next->index == max)
 		ft_reverse(&(*lst_a), move->reverse_a);
-	if ((*lst_a)->next->next->index == max && (*lst_a)->index > (*lst_a)->next->index)
+	if ((*lst_a)->next->next->index == max
+		&& (*lst_a)->index > (*lst_a)->next->index)
 		ft_swap(&(*lst_a), move->swap_a);
 }
 
@@ -61,7 +62,9 @@ void	ft_sort(t_stack *stack)
 		ft_swap(&stack->a, move->swap_a);
 	else if (stack->size_total == 3)
 		ft_three_algo(stack, &stack->a, move);
-	else if (stack->size_total > 3)
+	else if (stack->size_total <= 5)
 		ft_five_algo(stack, move);
+	else
+		ft_big_algo(stack, move);
 	free(move);
 }

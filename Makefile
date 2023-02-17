@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/16 13:00:45 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/02/17 12:52:47 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,10 @@ $YTools available$Z
 make checkup		$Y->$Z Run tests and norminette
 make eval		$Y->$Z Open evaluation sheet
 make help		$Y->$Z Display tools available
+make map		$Y->$Z Display mind map
 make mem		$Y->$Z Run test with leaks -atExit command
 make norm		$Y->$Z Run Norminette
+make numbers		$Y->$Z Open numbers generator
 make pdf 		$Y->$Z Open PDF subject
 make test		$Y->$Z Run a series of tests
 ---------------------------------------------------------------
@@ -78,9 +80,11 @@ RM		=	rm -rf
 NAME		=	push_swap
 
 SRCS_DIR	=	./src/
-SRCS_LIST	=	index.c \
+SRCS_LIST	=	big_algo.c \
+				index.c \
 				main.c \
 				parse.c \
+				position.c \
 				push.c \
 				reverse.c \
 				rotate.c \
@@ -191,7 +195,13 @@ pdf:
 	@open https://cdn.intra.42.fr/pdf/pdf/66937/fr.subject.pdf
 
 eval:
-	@echo https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
+	@open https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
+
+map:
+	@open https://whimsical.com/push-swap-X6SXns36GzkpCxF5zxkMFJ
+
+numbers:
+	@open https://www.calculatorsoup.com/calculators/statistics/random-number-generator.php
 
 mem:
 	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YMEMORY $W<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
@@ -212,4 +222,4 @@ mem:
 	valgrind --leak-check=full ./programme
 
 # Avoids file-target name conflicts
-.PHONY: all dir clean fclean re test norm lsan checkup pdf help mem eval
+.PHONY: all dir clean fclean re test norm lsan checkup pdf help mem eval map numbers
