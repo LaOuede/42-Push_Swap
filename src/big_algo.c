@@ -32,6 +32,8 @@ void	ft_choose_move(t_stack *stack)
 	{
 		total = (ft_absolute_value(ptr->nb_actions_lst_a)
 				+ ft_absolute_value(ptr->nb_actions_lst_b));
+		/*intégrer les valeurs absolues en tant qu'élément de structure pour rendre
+		la lecture plus facile*/
 		if (total < ft_absolute_value(actions))
 		{
 			actions = total;
