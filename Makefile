@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/17 12:52:47 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/02/20 07:58:14 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,9 +92,7 @@ SRCS_LIST	=	big_algo.c \
 				stack.c \
 				swap.c \
 				utils.c \
-				utils_moves.c \
-				utils_parse.c \
-				utils_sort.c
+				utils_moves.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJS_DIR	=	./obj/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 15:49:52 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/20 15:36:11 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_lst
 	int				number;
 	int				pos;
 	int				goal_pos;
+	int				nb_actions_lst_a;
+	int				nb_actions_lst_b;
+	struct s_lst	*prev;
 	struct s_lst	*next;
 }					t_lst;
 
@@ -54,14 +57,12 @@ typedef struct s_stack
 {
 	t_lst			*a;
 	t_lst			*b;
-	int				cost_stack_a;
-	int				cost_stack_b;
-	int				size_a;
-	int				size_b;
+	int				actions_a;
+	int				actions_b;
 	int				size_total;
 	int				median_a;
 	int				median_b;
-	int				sorted;
+//	int				sorted;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -114,12 +115,16 @@ void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move);
 void	ft_big_algo(t_stack *stack, t_move *move);
 void	ft_pre_sorting_big(t_stack *stack, t_move *move);
 void	ft_bring_b_back(t_stack *stack, t_move *move);
-void	ft_get_pos(t_lst *lst);
+//void	ft_get_pos(t_lst *lst);
+void	ft_get_pos(t_lst *lst, int	size);
 void	ft_position(t_stack *stack);
 void	ft_find_goal_pos(t_stack *stack);
 void	ft_move_cost(t_lst *lst);
+int		ft_absolute_value(int nb);
 
 /* ----------------UTILS---------------- */
 void	ft_error(char *error, t_stack **stack, char **tab);
+
+void	ft_add_element_front(t_lst **lst, t_lst *element);
 
 #endif

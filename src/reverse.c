@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 10:30:27 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:42:20 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	ft_reverse(t_lst **lst, char *move)
 	head = *lst;
 	*lst = last;
 	(*lst)->next = head;
+	last->prev = NULL;
 	penultimate->next = NULL;
+	head->prev = last;
 	printf("%s\n", move);
 }

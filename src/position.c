@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:19:10 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 17:06:58 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/20 14:51:34 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,35 @@ void	ft_find_goal_pos(t_stack *stack)
 	}
 }
 
-void	ft_get_pos(t_lst *lst)
+void	ft_get_pos(t_lst *lst, int	size)
 {
 	int		i;
+	int		j;
+	int		median;
 	t_lst	*ptr;
 
 	i = 0;
 	ptr = lst;
-	while (ptr)
+	median = size / 2;
+	while (i <= median)
 	{
 		ptr->pos = i;
 		ptr = ptr->next;
 		i++;
 	}
+	ptr = ft_lst_last(lst);
+	j = 0;
+	i = 0;
+	while (j++ < median)
+	{
+		ptr->pos = --i;
+		ptr = ptr->prev;
+	}
 }
 
 void	ft_position(t_stack *stack)
 {
-	ft_get_pos(stack->a);
-	ft_get_pos(stack->b);
+	ft_get_pos(stack->a, ft_lst_size(&stack->a));
+	ft_get_pos(stack->b, ft_lst_size(&stack->b));
 	ft_find_goal_pos(stack);
 }

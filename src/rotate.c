@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/16 10:17:55 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:31:15 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	ft_rotate(t_lst **lst, char *move)
 	last = ft_lst_last(*lst);
 	last->next = ptr;
 	ptr->next = NULL;
+	ptr->prev = last;
+	(*lst)->prev = NULL;
 	printf("%s\n", move);
 }

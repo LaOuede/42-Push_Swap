@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_algo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:37:39 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 17:24:20 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/20 15:46:58 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,55 @@
 
 /*
 TO DO :
-	* ft_nb_actions
-	* ft_efficient_move
-		* ft_move (code all moves with actions)
+	bring_b_back = 
+	* ft_move (code all moves with actions)
+	big_algo = 
 	* rotate a until sorted
 */
+
+void	ft_choose_move(t_stack *stack)
+{
+	t_lst	*ptr ;
+	int		total;
+	int		actions;
+
+	ptr = stack->b;
+	actions = INT_MAX;
+	while (ptr)
+	{
+		total = (ft_absolute_value(ptr->nb_actions_lst_a)
+				+ ft_absolute_value(ptr->nb_actions_lst_b));
+		if (total < ft_absolute_value(actions))
+		{
+			actions = total;
+			stack->actions_a = ptr->nb_actions_lst_a;
+			stack->actions_b = ptr->nb_actions_lst_b;
+		}
+		ptr = ptr->next;
+	}
+}
+
+void	ft_nb_actions(t_stack *stack)
+{
+	t_lst	*lst_b;
+
+	lst_b = stack->b;
+	while (lst_b)
+	{
+		lst_b->nb_actions_lst_a = lst_b->goal_pos;
+		lst_b->nb_actions_lst_b = lst_b->pos;
+		lst_b = lst_b->next;
+	}
+}
 
 void	ft_bring_b_back(t_stack *stack, t_move *move)
 {
 	(void) move;
+//	ft_push(&stack->b, &stack->a, move->push_a);
 	ft_position(stack);
-	ft_push(&stack->b, &stack->a, move->push_a);
-	ft_position(stack);
-		/* ft_nb actions(stack->b);
-		gest cost for each numbers
-		ft_move; */
+	ft_nb_actions(stack);
+	ft_choose_move(stack);
+//	ft_move(stack);
 }
 
 void	ft_pre_sorting_big(t_stack *stack, t_move *move)
@@ -66,4 +100,5 @@ void	ft_big_algo(t_stack *stack, t_move *move)
 	ft_pre_sorting_big(stack, move);
 	ft_three_algo(stack, &stack->a, move);
 	ft_bring_b_back(stack, move);
+//	ft_reset(stack, move);
 }

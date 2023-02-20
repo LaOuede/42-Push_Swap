@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 07:44:26 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 13:04:30 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:39:04 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int argc, char **argv)
 {
 	t_lst	*tmp;
 	t_stack	*stack;
+	t_stack	*ptr;
 
 	if (argc >= 2)
 	{
@@ -77,6 +78,7 @@ int	main(int argc, char **argv)
 		ft_index(stack->a, stack->size_total);
 		printf("\nList of movements =\n");
 		ft_sort(stack);
+		ptr = stack;
 		tmp = stack->a;
 		printf("\nStack_a numbers = ");
 		while (tmp != NULL)
@@ -119,6 +121,60 @@ int	main(int argc, char **argv)
 		{
 			printf("%d ", tmp->goal_pos);
 			tmp = tmp->next;
+		}
+		printf("\nStack_b pos = ");
+		tmp = stack->b;
+		while (tmp != NULL)
+		{
+			printf("%d ", tmp->pos);
+			tmp = tmp->next;
+		}
+		printf("\nStack_b actions = ");
+		tmp = stack->b;
+		while (tmp != NULL)
+		{
+			printf("(%d / ", tmp->nb_actions_lst_b);
+			printf("%d) ", tmp->nb_actions_lst_a);
+			tmp = tmp->next;
+		}
+		printf("\n\nStack actions to do (aka cheapest move) = ");
+		while (ptr != NULL)
+		{
+			printf("(%d / ", ptr->actions_a);
+			printf("%d) ", ptr->actions_b);
+			ptr = ptr->next;
+		}
+		tmp = stack->a;
+		t_lst *end = NULL;
+		printf("\n\nStack_a List forward = ");
+		while (tmp != NULL)
+		{
+			printf("%d ", tmp->number);
+			end = tmp;
+			tmp = tmp->next;
+		}
+		printf("\n");
+		printf("Stack_a List backward = ");
+		while (end != NULL)
+		{
+			printf("%d ", end->number);
+			end = end->prev;
+		}
+		tmp = stack->b;
+		end = NULL;
+		printf("\n\nStack_b List forward = ");
+		while (tmp != NULL)
+		{
+			printf("%d ", tmp->number);
+			end = tmp;
+			tmp = tmp->next;
+		}
+		printf("\n");
+		printf("Stack_b List backward = ");
+		while (end != NULL)
+		{
+			printf("%d ", end->number);
+			end = end->prev;
 		}
 		printf("\n\n>>>>> List sorted successfuly!✅ <<<<<\n\n");
 		ft_free_lst(&stack->a);

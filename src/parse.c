@@ -6,11 +6,25 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 08:31:36 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/20 07:46:10 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	ft_isnumber(char *argv)
+{
+	int	i;
+
+	i = 0;
+	if ((argv[i] == 43 || argv[i] == 45) && argv[i + 1] != '\0')
+		i++;
+	while (argv[i] && ft_isdigit(argv[i]) == 1)
+		i++;
+	if (ft_isdigit(argv[i]) == 0 && argv[i] != '\0')
+		return (F);
+	return (T);
+}
 
 void	ft_check_duplicates(t_stack *stack, t_lst *a)
 {
