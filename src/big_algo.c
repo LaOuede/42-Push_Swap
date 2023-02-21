@@ -67,8 +67,16 @@ void	ft_choose_move(t_stack *stack)
 	actions = INT_MAX;
 	while (ptr)
 	{
+<<<<<<< HEAD
 		total = stack->b->abs_actions_a + stack->b->abs_actions_b;
 		if (total < actions)
+=======
+		total = (ft_absolute_value(ptr->nb_actions_lst_a)
+				+ ft_absolute_value(ptr->nb_actions_lst_b));
+		/*intégrer les valeurs absolues en tant qu'élément de structure pour rendre
+		la lecture plus facile*/
+		if (total < ft_absolute_value(actions))
+>>>>>>> 81b3a558ca7c20f733b1ce822ebac194131dd406
 		{
 			actions = total;
 			stack->actions_a = ptr->actions_a;
