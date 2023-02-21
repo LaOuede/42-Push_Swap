@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 07:44:26 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/20 15:39:04 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:29:38 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,21 +129,17 @@ int	main(int argc, char **argv)
 			printf("%d ", tmp->pos);
 			tmp = tmp->next;
 		}
-		printf("\nStack_b actions = ");
+		printf("\nStack_a actions && Stack_b actions = ");
 		tmp = stack->b;
 		while (tmp != NULL)
 		{
-			printf("(%d / ", tmp->nb_actions_lst_b);
-			printf("%d) ", tmp->nb_actions_lst_a);
+			printf("(%d / ", tmp->actions_a);
+			printf("%d) ", tmp->actions_b);
 			tmp = tmp->next;
 		}
 		printf("\n\nStack actions to do (aka cheapest move) = ");
-		while (ptr != NULL)
-		{
-			printf("(%d / ", ptr->actions_a);
-			printf("%d) ", ptr->actions_b);
-			ptr = ptr->next;
-		}
+		printf("(%d / ", ptr->actions_a);
+		printf("%d) ", ptr->actions_b);
 		tmp = stack->a;
 		t_lst *end = NULL;
 		printf("\n\nStack_a List forward = ");

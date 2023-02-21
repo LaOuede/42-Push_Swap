@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/20 14:34:09 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:22:31 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_push(t_lst **from, t_lst **to, char *move)
 	{
 		ft_add_element_front(to, (*from));
 		(*from) = NULL;
+		printf("%s\n", move);
 		return ;
 	}
 	ptr = (*from)->next;
@@ -30,7 +31,6 @@ void	ft_push(t_lst **from, t_lst **to, char *move)
 	(*from)->prev = NULL;
 	printf("%s\n", move);
 }
-
 
 void	ft_add_element_front(t_lst **lst, t_lst *element)
 {

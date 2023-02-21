@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 10:27:47 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:25:17 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_move	*ft_write_moves(void)
 	moves->reverse = "rrr";
 	moves->reverse_a = "rra";
 	moves->reverse_b = "rrb";
-	moves->next = NULL;
 	return (moves);
 }
 

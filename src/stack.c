@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/20 15:28:46 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:31:07 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack	*ft_create_stack(void)
 {
 	t_stack	*new_stack;
 
-	new_stack = ft_calloc(sizeof * new_stack, 1);
+	new_stack = ft_calloc(sizeof(*new_stack), 1);
 	if (!new_stack)
 		return (NULL);
 	new_stack->actions_a = -1;
@@ -24,7 +24,6 @@ t_stack	*ft_create_stack(void)
 	new_stack->size_total = 0;
 	new_stack->median_a = -1;
 	new_stack->median_b = -1;
-	new_stack->next = NULL;
 	return (new_stack);
 }
 
@@ -32,15 +31,17 @@ t_lst	*ft_create_element(int nb)
 {
 	t_lst	*new_element;
 
-	new_element = ft_calloc(sizeof * new_element, 1);
+	new_element = ft_calloc(sizeof(*new_element), 1);
 	if (!new_element)
 		return (NULL);
 	new_element->index = -1;
 	new_element->number = nb;
 	new_element->pos = 0;
 	new_element->goal_pos = -1;
-	new_element->nb_actions_lst_a = 0;
-	new_element->nb_actions_lst_b = 0;
+	new_element->actions_a = 0;
+	new_element->actions_b = 0;
+	new_element->abs_actions_a = 0;
+	new_element->abs_actions_b = 0;
 	new_element->prev = NULL;
 	new_element->next = NULL;
 	return (new_element);
@@ -112,7 +113,7 @@ void	ft_add_element_bottom(t_lst **a, t_lst *element)
 	free(ptr);
 } */
 
-int	ft_stack_size(t_stack **stack)
+/* int	ft_stack_size(t_stack **stack)
 {
 	int		size;
 	t_stack	*ptr;
@@ -129,7 +130,7 @@ int	ft_stack_size(t_stack **stack)
 	if (ptr->next == NULL)
 		size++;
 	return (size);
-}
+} */
 
 int	ft_lst_size(t_lst **lst)
 {

@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:23:42 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/20 15:22:16 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:33:14 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,9 @@ void	ft_error(char *error, t_stack **stack, char **tab)
 
 void	ft_free_stack(t_stack **stack)
 {
-	t_stack	*ptr;
-
 	if (!stack || !*stack)
 		return ;
-	while (*stack)
-	{
-		ptr = (*stack)->next;
-		free(*stack);
-		*stack = ptr;
-	}
+	free(*stack);
 	*stack = NULL;
 }
 
@@ -58,20 +51,13 @@ void	ft_free_lst(t_lst **lst)
 
 void	ft_free_move(t_stack **stack)
 {
-	t_stack	*ptr;
-
 	if (!stack || !*stack)
 		return ;
-	while (*stack)
-	{
-		ptr = (*stack)->next;
-		free(*stack);
-		*stack = ptr;
-	}
+	free(*stack);
 	*stack = NULL;
 }
 
-int	ft_absolute_value(int nb)
+int	ft_abs_val(int nb)
 {
 	if (nb < 0)
 		(nb *= -1);

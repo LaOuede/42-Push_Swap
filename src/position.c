@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:19:10 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/20 14:51:34 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 12:48:41 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,28 @@ void	ft_find_goal_pos(t_stack *stack)
 	{
 		goal_index = ft_find_index_min(stack->a);
 		if (lst_b->index < goal_index)
+		{
+			while (lst_a->index != goal_index)
+				lst_a = lst_a->next;
 			lst_b->goal_pos = lst_a->pos;
+		}
 		while (lst_a)
 		{
-			if (lst_b->index > lst_a->index && lst_b->index > goal_index)
+			if (lst_b->index > lst_a->index && lst_b->index > goal_index
+					&& lst_a->index >= goal_index)
 			{
 				goal_index = lst_a->index;
-				lst_b->goal_pos = lst_a->next->pos;
+				lst_b->goal_pos = (lst_a->pos + 1);
 			}
 			lst_a = lst_a->next;
 		}
 		lst_a = stack->a;
 		lst_b = lst_b->next;
 	}
+	printf("\n>>>>> Find goal position ok ✅ <<<<<<\n\n");
 }
 
-void	ft_get_pos(t_lst *lst, int	size)
+void	ft_get_pos(t_lst *lst, int size)
 {
 	int		i;
 	int		j;
@@ -63,6 +69,7 @@ void	ft_get_pos(t_lst *lst, int	size)
 		ptr->pos = --i;
 		ptr = ptr->prev;
 	}
+	printf("\n>>>>> Get Postitions ok ✅ <<<<<<\n\n");
 }
 
 void	ft_position(t_stack *stack)

@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/20 15:36:11 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/21 14:25:31 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_move
 	char			*reverse;
 	char			*reverse_a;
 	char			*reverse_b;
-	struct s_move	*next;
 }					t_move;
 
 typedef struct s_lst
@@ -47,8 +46,10 @@ typedef struct s_lst
 	int				number;
 	int				pos;
 	int				goal_pos;
-	int				nb_actions_lst_a;
-	int				nb_actions_lst_b;
+	int				actions_a;
+	int				actions_b;
+	int				abs_actions_a;
+	int				abs_actions_b;
 	struct s_lst	*prev;
 	struct s_lst	*next;
 }					t_lst;
@@ -62,8 +63,6 @@ typedef struct s_stack
 	int				size_total;
 	int				median_a;
 	int				median_b;
-//	int				sorted;
-	struct s_stack	*next;
 }					t_stack;
 
 /* ----------------INDEX---------------- */
@@ -96,6 +95,15 @@ t_lst	*ft_lst_last(t_lst *stack);
 t_lst	*ft_lst_penultimate(t_lst *lst);
 void	ft_swap(t_lst **lst, char *move);
 t_move	*ft_write_moves(void);
+void	ft_reverse_both(t_stack *stack, t_move *move);
+void	ft_rrr(t_lst **lst);
+void	ft_rotate_both(t_stack *stack, t_move *move);
+void	ft_rr(t_lst **lst);
+void	ft_move(t_stack *stack, t_move *move);
+void	ft_ra(t_stack *stack, t_move *move);
+void	ft_rb(t_stack *stack, t_move *move);
+void	ft_rra(t_stack *stack, t_move *move);
+void	ft_rrb(t_stack *stack, t_move *move);
 
 /* ----------------SORTING---------------- */
 int		ft_check_sorted(t_lst *lst);
@@ -120,7 +128,8 @@ void	ft_get_pos(t_lst *lst, int	size);
 void	ft_position(t_stack *stack);
 void	ft_find_goal_pos(t_stack *stack);
 void	ft_move_cost(t_lst *lst);
-int		ft_absolute_value(int nb);
+int		ft_abs_val(int nb);
+void	ft_reset(t_stack *stack, t_move *move);
 
 /* ----------------UTILS---------------- */
 void	ft_error(char *error, t_stack **stack, char **tab);
@@ -128,3 +137,12 @@ void	ft_error(char *error, t_stack **stack, char **tab);
 void	ft_add_element_front(t_lst **lst, t_lst *element);
 
 #endif
+
+/* 	while (i++ < 12)
+	{
+		ft_position(stack);
+		ft_nb_actions(stack);
+		ft_choose_move(stack);
+		ft_move(stack, move);
+		printf("\n>>>>> Move %d ok ✅ <<<<<<\n\n", i);
+	} */
