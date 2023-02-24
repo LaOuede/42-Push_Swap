@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:23:42 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 14:44:35 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/24 18:38:25 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,4 @@ void	ft_free_lst(t_lst **lst)
 		*lst = ptr;
 	}
 	*lst = NULL;
-}
-
-void	ft_free_move(t_stack **stack)
-{
-	if (!stack || !*stack)
-		return ;
-	free(*stack);
-	*stack = NULL;
 }
