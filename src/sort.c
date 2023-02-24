@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:17:25 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/20 14:52:08 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:57:06 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_pre_sorting(t_stack *stack, t_move *move)
+static void	ft_pre_sorting(t_stack *stack, t_move *move)
 {
 	int	push;
-	int	median;
 
 	push = 0;
-	median = (stack->size_total / 2);
-	while (push < median)
+	while (push < stack->median_a)
 	{
-		if (stack->a->index <= median)
+		if (stack->a->index <= stack->median_a)
 		{
 			ft_push(&stack->a, &stack->b, move->push_b);
 				push++;
@@ -31,11 +29,11 @@ void	ft_pre_sorting(t_stack *stack, t_move *move)
 	}
 }
 
-void	ft_five_algo(t_stack *stack, t_move *move)
+static void	ft_five_algo(t_stack *stack, t_move *move)
 {
 	ft_pre_sorting(stack, move);
 	if (ft_lst_size(&stack->a) == 3)
-		ft_three_algo(stack, &stack->a, move);
+		ft_three_algo(stack, move);
 	else if (stack->a->index > stack->a->next->index)
 		ft_swap(&stack->a, move->swap_a);
 	if (stack->b->index < stack->b->next->index)
@@ -44,30 +42,31 @@ void	ft_five_algo(t_stack *stack, t_move *move)
 		ft_push(&stack->b, &stack->a, move->push_a);
 }
 
-void	ft_three_algo(t_stack *stack, t_lst **lst_a, t_move *move)
+void	ft_three_algo(t_stack *stack, t_move *move)
 {
 	int	max;
 
 	max = ft_find_index_max(stack->a);
-	if ((*lst_a)->index == max)
-		ft_rotate(&(*lst_a), move->rotate_a);
-	if ((*lst_a)->next->index == max)
-		ft_reverse(&(*lst_a), move->reverse_a);
-	if ((*lst_a)->next->next->index == max
-		&& (*lst_a)->index > (*lst_a)->next->index)
-		ft_swap(&(*lst_a), move->swap_a);
-	printf("\n>>>>>> Three algo ok ✅ <<<<<<\n\n");
+	if (stack->a->index == max)
+		ft_rotate(&stack->a, move->rotate_a);
+	if (stack->a->next->index == max)
+		ft_reverse(&stack->a, move->reverse_a);
+	if (stack->a->next->next->index == max
+		&& stack->a->index > stack->a->next->index)
+		ft_swap(&stack->a, move->swap_a);
 }
 
 int	ft_check_sorted(t_lst *lst)
 {
-	while (lst->next != NULL)
+	t_lst	*ptr;
+
+	ptr = lst;
+	while (ptr->next != NULL)
 	{
-		if (lst->next->number < lst->number)
+		if (ptr->next->number < ptr->number)
 			return (F);
-		lst = lst->next;
+		ptr = ptr->next;
 	}
-	printf("\n>>>>> Already sorted!😎 <<<<<\n\n");
 	return (T);
 }
 
@@ -81,7 +80,7 @@ void	ft_sort(t_stack *stack)
 	if (stack->size_total == 2)
 		ft_swap(&stack->a, move->swap_a);
 	else if (stack->size_total == 3)
-		ft_three_algo(stack, &stack->a, move);
+		ft_three_algo(stack, move);
 	else if (stack->size_total <= 5)
 		ft_five_algo(stack, move);
 	else

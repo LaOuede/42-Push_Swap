@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse.c                                          :+:      :+:    :+:   */
+/*   synchro_moves.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/21 14:58:09 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:06:42 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_reverse(t_lst **lst, char *move)
-{
-	t_lst	*head;
-	t_lst	*last;
-	t_lst	*penultimate;
-
-	last = ft_lst_last(*lst);
-	penultimate = ft_lst_penultimate(*lst);
-	head = *lst;
-	*lst = last;
-	(*lst)->next = head;
-	last->prev = NULL;
-	penultimate->next = NULL;
-	head->prev = last;
-	printf("%s\n", move);
-}
-
-void	ft_rrr(t_lst **lst)
+static void	ft_rrr(t_lst **lst)
 {
 	t_lst	*head;
 	t_lst	*last;
@@ -52,4 +35,27 @@ void	ft_reverse_both(t_stack *stack, t_move *move)
 	stack->actions_a++;
 	stack->actions_b++;
 	printf("%s\n", move->reverse);
+}
+
+static void	ft_rr(t_lst **lst)
+{
+	t_lst	*ptr;
+	t_lst	*last;
+
+	ptr = *lst;
+	*lst = (*lst)->next;
+	last = ft_lst_last(*lst);
+	last->next = ptr;
+	ptr->next = NULL;
+	ptr->prev = last;
+	(*lst)->prev = NULL;
+}
+
+void	ft_rotate_both(t_stack *stack, t_move *move)
+{
+	ft_rr(&stack->a);
+	ft_rr(&stack->b);
+	stack->actions_a--;
+	stack->actions_b--;
+	printf("%s\n", move->rotate);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
+#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/21 14:58:38 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/02/24 15:10:41 by gwenolalero      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,19 +80,20 @@ RM		=	rm -rf
 NAME		=	push_swap
 
 SRCS_DIR	=	./src/
-SRCS_LIST	=	big_algo.c \
+SRCS_LIST	=	actions.c \
+				basic_moves.c \
+				big_algo.c \
+				free_error.c \
 				index.c \
 				main.c \
+				moves_1.c \
+				moves_2.c \
 				parse.c \
 				position.c \
-				push.c \
-				reverse.c \
-				rotate.c \
 				sort.c \
 				stack.c \
-				swap.c \
-				utils.c \
-				utils_moves.c
+				synchro_moves.c \
+				utils.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJS_DIR	=	./obj/
@@ -107,6 +108,8 @@ LIBFT_DIR	=	./libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
 LIBFT_H		=	$(LIBFT_DIR)includes/libft.h
 
+USER		=	$(shell whoami)
+
 #------------------------------------------------------------------------------#
 #                                  RULES                                       #
 #------------------------------------------------------------------------------#
@@ -114,7 +117,8 @@ LIBFT_H		=	$(LIBFT_DIR)includes/libft.h
 # Creation of the executable
 all: dir $(NAME)
 	@echo $Y"$$BANNER1"$W
-	@echo "				$Zmade by $Cgle-roux\n$W"
+	@echo "				$Z...made by $Cgle-roux$Z$W"
+	@echo "					$Z...evaluated by $C$(USER)\n$W"
 
 # Compile library
 $(NAME): $(OBJS)

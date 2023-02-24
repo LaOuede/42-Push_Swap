@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:39:22 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/17 10:39:56 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:52:28 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_index(t_lst *a, int size)
+void	ft_index(t_lst *lst, int size)
 {
 	int		i;
 	t_lst	*max;
 	t_lst	*ptr;
 
 	max = NULL;
-	ptr = a;
+	ptr = lst;
 	while (size > 0)
 	{
 		i = INT_MIN;
@@ -33,7 +33,7 @@ void	ft_index(t_lst *a, int size)
 			ptr = ptr->next;
 		}
 		max->index = size;
-		ptr = a;
+		ptr = lst;
 		size--;
 	}
 }

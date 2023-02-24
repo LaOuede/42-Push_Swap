@@ -3,16 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:19:10 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/21 12:48:41 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:03:22 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_find_goal_pos(t_stack *stack)
+static void	search_best_pos(t_stack *stack, t_lst *lst_b, int goal_index)
+{
+	t_lst	*lst_a;
+
+	lst_a = stack->a;
+	while (lst_a)
+	{
+		if (lst_b->index > lst_a->index && lst_b->index > goal_index
+			&& lst_a->index >= goal_index)
+		{
+			goal_index = lst_a->index;
+			lst_b->goal_pos = (lst_a->pos + 1);
+		}
+		lst_a = lst_a->next;
+	}
+}
+
+static void	ft_find_goal_pos(t_stack *stack)
 {
 	t_lst	*lst_a;
 	t_lst	*lst_b;
@@ -29,23 +46,14 @@ void	ft_find_goal_pos(t_stack *stack)
 				lst_a = lst_a->next;
 			lst_b->goal_pos = lst_a->pos;
 		}
-		while (lst_a)
-		{
-			if (lst_b->index > lst_a->index && lst_b->index > goal_index
-					&& lst_a->index >= goal_index)
-			{
-				goal_index = lst_a->index;
-				lst_b->goal_pos = (lst_a->pos + 1);
-			}
-			lst_a = lst_a->next;
-		}
+		else
+			search_best_pos(stack, lst_b, goal_index);
 		lst_a = stack->a;
 		lst_b = lst_b->next;
 	}
-	printf("\n>>>>> Find goal position ok ✅ <<<<<<\n\n");
 }
 
-void	ft_get_pos(t_lst *lst, int size)
+static void	ft_get_pos(t_lst *lst, int size)
 {
 	int		i;
 	int		j;
@@ -57,19 +65,17 @@ void	ft_get_pos(t_lst *lst, int size)
 	median = size / 2;
 	while (i <= median)
 	{
-		ptr->pos = i;
+		ptr->pos = i++;
 		ptr = ptr->next;
-		i++;
 	}
 	ptr = ft_lst_last(lst);
-	j = 0;
 	i = 0;
+	j = 0;
 	while (j++ < median)
 	{
 		ptr->pos = --i;
 		ptr = ptr->prev;
 	}
-	printf("\n>>>>> Get Postitions ok ✅ <<<<<<\n\n");
 }
 
 void	ft_position(t_stack *stack)

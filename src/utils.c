@@ -3,58 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 08:23:42 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/21 14:33:14 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/24 15:12:52 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_error(char *error, t_stack **stack, char **tab)
+t_move	*ft_write_moves(void)
 {
-	if ((*stack)->a)
-		ft_free_lst(&(*stack)->a);
-	if ((*stack)->b)
-		ft_free_lst(&(*stack)->b);
-	if (stack)
-		ft_free_stack(stack);
-	if (tab)
-		ft_free_tab(tab);
-	write(STDERR_FILENO, error, ft_strlen(error));
-	exit(EXIT_FAILURE);
+	t_move	*moves;
+
+	moves = ft_calloc(sizeof * moves, 1);
+	if (!moves)
+		return (NULL);
+	moves->push = "ss";
+	moves->push_a = "pa";
+	moves->push_b = "pb";
+	moves->swap_a = "sa";
+	moves->swap_b = "sb";
+	moves->rotate = "rr";
+	moves->rotate_a = "ra";
+	moves->rotate_b = "rb";
+	moves->reverse = "rrr";
+	moves->reverse_a = "rra";
+	moves->reverse_b = "rrb";
+	return (moves);
 }
 
-void	ft_free_stack(t_stack **stack)
+t_lst	*ft_lst_last(t_lst *lst)
 {
-	if (!stack || !*stack)
-		return ;
-	free(*stack);
-	*stack = NULL;
+	if (!lst)
+		return (0);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
-void	ft_free_lst(t_lst **lst)
+t_lst	*ft_lst_penultimate(t_lst *lst)
 {
-	t_lst	*ptr;
-
-	if (!lst || !*lst)
-		return ;
-	while (*lst)
-	{
-		ptr = (*lst)->next;
-		free(*lst);
-		*lst = ptr;
-	}
-	*lst = NULL;
-}
-
-void	ft_free_move(t_stack **stack)
-{
-	if (!stack || !*stack)
-		return ;
-	free(*stack);
-	*stack = NULL;
+	if (!lst)
+		return (0);
+	while (lst->next && lst->next->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
 
 int	ft_abs_val(int nb)
@@ -62,4 +56,11 @@ int	ft_abs_val(int nb)
 	if (nb < 0)
 		(nb *= -1);
 	return (nb);
+}
+
+int	ft_find_min(int nb1, int nb2)
+{
+	if (nb1 >= nb2)
+		return (nb2);
+	return (nb1);
 }
