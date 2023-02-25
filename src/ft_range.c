@@ -29,7 +29,7 @@ Examples:
 	- With (0, -3) you will return an array containing 0, -1, -2 and -3.
 */
 
-#include <stdio.h>
+#include <stdlib.h>
 
 int	ft_abs_val(int nb)
 {
@@ -61,7 +61,7 @@ int	*ft_range(int start, int end)
 
 /*
 #include <unistd.h>
-#include <stdlib.h>
+#include <stdio.h>
 
 int	main(void)
 {
