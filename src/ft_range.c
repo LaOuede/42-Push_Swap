@@ -38,7 +38,7 @@ int	ft_abs_val(int nb)
 	return (nb);
 }
 
-int	*ft_rrange(int start, int end)
+int	*ft_range(int start, int end)
 {
 	int	len = ft_abs_val(end - start) + 1;
 	int	*tab;
