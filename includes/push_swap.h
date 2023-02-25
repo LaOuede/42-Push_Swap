@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 15:11:35 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/25 08:44:45 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_lst
 	int				number;
 	int				pos;
 	int				goal_pos;
-	int				landmark;
 	int				actions_a;
 	int				actions_b;
 	int				abs_actions_a;

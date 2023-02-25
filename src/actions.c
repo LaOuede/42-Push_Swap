@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:47:22 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/24 15:03:57 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/25 08:44:34 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,6 @@ static void	ft_choose_move(t_stack *stack)
 		if (total < actions)
 		{
 			actions = total;
-			stack->actions_a = ptr->actions_a;
-			stack->actions_b = ptr->actions_b;
-		}
-		if (total == actions && ptr->number > ptr->landmark)
-		{
-			actions = total;
-			ptr->landmark = ptr->number;
 			stack->actions_a = ptr->actions_a;
 			stack->actions_b = ptr->actions_b;
 		}

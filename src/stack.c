@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:30 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/24 14:59:00 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/25 08:44:50 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_lst	*ft_create_element(int nb)
 	new_element->number = nb;
 	new_element->pos = 0;
 	new_element->goal_pos = -1;
-	new_element->landmark = INT_MIN;
 	new_element->actions_a = 0;
 	new_element->actions_b = 0;
 	new_element->abs_actions_a = 0;
