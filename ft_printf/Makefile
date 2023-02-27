@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/27 10:08:11 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/02/27 10:26:46 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,55 +23,13 @@ RM		=	rm -rf
 ARCH	=	ar rcs	
 
 # Dir and file names
-NAME			=	libft.a
+NAME		=	printf.a
 
 SRCS_DIR	=	./src/
-SRCS_LIST	=	ft_atoi.c \
-				ft_atol.c \
-				ft_bzero.c \
-				ft_calloc.c \
-				ft_free_tab.c \
-				ft_isalnum.c \
-				ft_isalpha.c \
-				ft_isascii.c \
-				ft_isdigit.c \
-				ft_isprint.c \
-				ft_iswhitespace.c \
-				ft_itoa.c \
-				ft_lstadd_back.c \
-				ft_lstadd_front.c \
-				ft_lstclear.c \
-				ft_lstdelone.c \
-				ft_lstiter.c \
-				ft_lstlast.c \
-				ft_lstmap.c \
-				ft_lstnew.c \
-				ft_lstsize.c \
-				ft_memchr.c \
-				ft_memcmp.c \
-				ft_memcpy.c \
-				ft_memmove.c \
-				ft_memset.c \
-				ft_putchar_fd.c \
-				ft_putnbr_fd.c \
-				ft_putstr_fd.c \
-				ft_putendl_fd.c \
-				ft_split.c \
-				ft_strchr.c \
-				ft_strdup.c \
-				ft_striteri.c \
-				ft_strjoin.c \
-				ft_strlcat.c \
-				ft_strlcpy.c \
-				ft_strlen.c \
-				ft_strmapi.c \
-				ft_strncmp.c \
-				ft_strnstr.c \
-				ft_strrchr.c \
-				ft_strtrim.c \
-				ft_substr.c \
-				ft_tolower.c \
-				ft_toupper.c
+SRCS_LIST	=	ft_len.c \
+				ft_printf.c \
+				ft_print_utils.c \
+				ft_type.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJS_DIR	=	./obj/
@@ -79,7 +37,7 @@ OBJS_LIST	=	$(patsubst %.c, %.o, $(SRCS_LIST))
 OBJS		=	$(addprefix $(OBJS_DIR), $(OBJS_LIST))
 
 HEADER_DIR	=	./includes/
-HEADER_LIST	=	libft.h
+HEADER_LIST	=	ft_printf.h
 HEADER	 	=	$(addprefix $(HEADER_DIR), $(HEADER_LIST))
 
 #------------------------------------------------------------------------------#
@@ -100,8 +58,8 @@ all: dir $(NAME)
 # Compile library
 $(NAME): $(OBJS)
 	@$(ARCH) $(NAME) $(OBJS)
-	@echo "\n\n$W----------------------- $Zlibft is $Gdone ✅$W ----------------------"
-
+	@echo "\n\n$W----------------------- $Zprintf is $Gdone ✅$W ----------------------"
+	
 # Create all files .o (object) from files .c (source code)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
 	@printf "\n $GCompiling : $Z$(notdir $<)"
@@ -114,7 +72,7 @@ dir:
 # Removes objects
 clean:
 	@$(RM) $(OBJS_DIR)
-	@echo "\n$W--------------- $Z$(NAME) : $(OBJS_DIR) was $Rdeleted ❌$W----------------\n"
+	@echo "$W--------------- $Z$(NAME) : $(OBJS_DIR) was $Rdeleted ❌$W---------------\n"
 
 # Removes all objects and executables
 fclean: clean
@@ -122,7 +80,7 @@ fclean: clean
 	@echo "$W-------- $ZAll exec. and archives successfully $Rdeleted ❌$W--------"
 
 # Removes objects and executables and remake
-re: fclean
+re: fclean all
 	@$(MAKE) all
 
 # Avoids file-target name conflicts

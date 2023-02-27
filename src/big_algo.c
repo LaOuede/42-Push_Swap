@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   big_algo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 08:37:39 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 15:04:34 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/27 08:52:02 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*This function brings bask the min index on top of a stack at the end of the
+sorting part.*/
 static void	ft_reset(t_stack *stack, t_move *move)
 {
 	while (ft_check_sorted(stack->a) == 0)
@@ -23,6 +25,7 @@ static void	ft_reset(t_stack *stack, t_move *move)
 	}
 }
 
+/*This function does the moves needed regarding the action cost of a and b.*/
 static void	ft_move(t_stack *stack, t_move *move)
 {
 	while (stack->actions_a || stack->actions_b)
@@ -47,17 +50,18 @@ static void	ft_move(t_stack *stack, t_move *move)
 	ft_push(&stack->b, &stack->a, move->push_a);
 }
 
+/*This function pushes numbers from stack a to the top of stack b.*/
 static void	ft_pre_sorting_big(t_stack *stack, t_move *move)
 {
-	int	push;
+	int	landmark;
 
-	push = 0;
-	while (push < stack->median_a)
+	landmark = 0;
+	while (landmark < stack->median_a)
 	{
 		if (stack->a->index <= stack->median_a)
 		{
 			ft_push(&stack->a, &stack->b, move->push_b);
-				push++;
+				landmark++;
 		}
 		else
 			ft_rotate(&stack->a, move->rotate_a);

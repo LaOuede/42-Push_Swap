@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   synchro_moves.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:47:29 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 15:06:42 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/27 10:20:42 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*These functions do basic rr and rrr moves but update the cost
+at the same time.*/
 static void	ft_rrr(t_lst **lst)
 {
 	t_lst	*head;
@@ -34,7 +36,7 @@ void	ft_reverse_both(t_stack *stack, t_move *move)
 	ft_rrr(&stack->b);
 	stack->actions_a++;
 	stack->actions_b++;
-	printf("%s\n", move->reverse);
+	ft_printf("%s\n", move->reverse);
 }
 
 static void	ft_rr(t_lst **lst)
@@ -57,5 +59,5 @@ void	ft_rotate_both(t_stack *stack, t_move *move)
 	ft_rr(&stack->b);
 	stack->actions_a--;
 	stack->actions_b--;
-	printf("%s\n", move->rotate);
+	ft_printf("%s\n", move->rotate);
 }

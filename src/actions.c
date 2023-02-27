@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 12:47:22 by gwenolalero       #+#    #+#             */
-/*   Updated: 2023/02/25 08:44:34 by gwenolalero      ###   ########.fr       */
+/*   Created: 2023/02/24 12:47:22 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/02/27 08:50:44 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ static void	ft_choose_move(t_stack *stack)
 	}
 }
 
+/*This function calculates the number of actions needed in order to
+move an element from b to a. Then, the function selects the cheapest move
+among all elements and does the move.*/
 void	ft_actions(t_stack *stack)
 {
 	t_lst	*lst_b;

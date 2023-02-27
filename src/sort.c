@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:17:25 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 14:57:06 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/27 10:20:42 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*This function pushes numbers from stack a to the top of stack b*/
 static void	ft_pre_sorting(t_stack *stack, t_move *move)
 {
-	int	push;
+	int	landmark;
 
-	push = 0;
-	while (push < stack->median_a)
+	landmark = 0;
+	while (landmark < stack->median_a)
 	{
 		if (stack->a->index <= stack->median_a)
 		{
 			ft_push(&stack->a, &stack->b, move->push_b);
-				push++;
+				landmark++;
 		}
 		else
 			ft_rotate(&stack->a, move->rotate_a);
@@ -70,6 +71,8 @@ int	ft_check_sorted(t_lst *lst)
 	return (T);
 }
 
+/*This function checks if the list is already sorted and then 
+chooses the best algorythm regarding the list of numbers.*/
 void	ft_sort(t_stack *stack)
 {
 	t_move	*move;

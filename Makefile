@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
+#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/26 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/02/24 15:10:41 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/02/27 10:08:37 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,15 +51,12 @@ TEST6_ARGS = 3 A 2
 define HELP
 $Z---------------------------------------------------------------
 $YTools available$Z
-make checkup		$Y->$Z Run tests and norminette
-make eval		$Y->$Z Open evaluation sheet
 make help		$Y->$Z Display tools available
 make map		$Y->$Z Display mind map
 make mem		$Y->$Z Run test with leaks -atExit command
 make norm		$Y->$Z Run Norminette
 make numbers		$Y->$Z Open numbers generator
 make pdf 		$Y->$Z Open PDF subject
-make test		$Y->$Z Run a series of tests
 ---------------------------------------------------------------
 endef
 export HELP
@@ -108,6 +105,10 @@ LIBFT_DIR	=	./libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
 LIBFT_H		=	$(LIBFT_DIR)includes/libft.h
 
+PRINTF_DIR	=	./ft_printf/
+PRINTF		=	$(PRINTF_DIR)printf.a
+PRINTF_H	=	$(PRINTF_DIR)includes/ft_printf.h
+
 USER		=	$(shell whoami)
 
 #------------------------------------------------------------------------------#
@@ -125,7 +126,8 @@ $(NAME): $(OBJS)
 	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>> $Zpush_swap is $Gdone ✅ $W<<<<<<<<<<<<<<<<<<<<<"
 	@echo "\n$W--------------------------- $Zlibft.a $W----------------------------"
 	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) -o $(NAME)
+	@make -C $(PRINTF_DIR)
+	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(PRINTF) -o $(NAME)
 	@echo "\n-------------- $ZIf help is needed, type $Ymake help $W--------------"
 	@echo "\n>>>>>>>>>>>>>>>>>>>> $ZPUSH_SWAP is $Gready ✅$W <<<<<<<<<<<<<<<<<<<<"
 
@@ -143,13 +145,15 @@ clean:
 	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YCLEANING $W<<<<<<<<<<<<<<<<<<<<<<<<<<"
 	@$(RM) $(OBJS_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@echo "$W----------- $Z$(NAME) : $(OBJS_DIR)objects was $Rdeleted ❌$W-----------"
+	@$(MAKE) -C $(PRINTF_DIR) clean
+	@echo "$W-------------- $Z$(NAME) : $(OBJS_DIR) was $Rdeleted ❌$W---------------"
 
 # Removes executables
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(LIBFT)
-	@echo "\n$W-------- $ZAll exec. and archives successfully $Rdeleted ❌$W--------\n"
+	@$(RM) $(PRINTF)
+	@echo "\n$W--------- $ZAll exec. and archives successfully $Rdeleted ❌$W-------\n"
 	@echo "$W>>>>>>>>>>>>>>>>>>>>> $ZCleaning is $Gdone ✅ $W<<<<<<<<<<<<<<<<<<<<<\n\n"
 
 # Removes objects and executables and remake
@@ -175,7 +179,7 @@ test:
 
 norm :
 	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE $W<<<<<<<<<<<<<<<<<<<<<<<<<<$Z\n"
-	@norminette $(SRCS) $(HEADER) $(LIBFT_DIR)
+	@norminette $(SRCS) $(HEADER) $(LIBFT_DIR) $(PRINTF_DIR)
 	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<<"
 
 #lsan : $(LSAN)
@@ -185,19 +189,16 @@ norm :
 #	@$(MAKE) -C LeakSanitizer
 
 # Verifications before sumission
-checkup: 
-	@$(MAKE) test
+#checkup: 
+#	@$(MAKE) test
 #	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YMEMORY $W<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
 #	$(MAKE) lsan
 #	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YMEMORY ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-	@$(MAKE) norm
+#	@$(MAKE) norm
 
 # Opens the subject
 pdf:
 	@open https://cdn.intra.42.fr/pdf/pdf/66937/fr.subject.pdf
-
-eval:
-	@open https://github.com/rizky/42-corrections/blob/master/push_swap.pdf
 
 map:
 	@open https://whimsical.com/push-swap-X6SXns36GzkpCxF5zxkMFJ
@@ -224,4 +225,4 @@ mem:
 	valgrind --leak-check=full ./programme
 
 # Avoids file-target name conflicts
-.PHONY: all dir clean fclean re test norm lsan checkup pdf help mem eval map numbers
+.PHONY: all dir clean fclean re test norm lsan pdf help mem map numbers

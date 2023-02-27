@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:24:30 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 14:46:59 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/27 08:44:17 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*This function checks if there is some duplicates among the args*/
 static void	ft_check_duplicates(t_stack *stack, t_lst *a)
 {
 	t_lst	*node_1;
@@ -33,6 +34,7 @@ static void	ft_check_duplicates(t_stack *stack, t_lst *a)
 	}
 }
 
+/*This function checks if the argument is a number and deals with the + and - */
 static int	ft_isnumber(char *argv)
 {
 	int	i;
@@ -47,6 +49,8 @@ static int	ft_isnumber(char *argv)
 	return (T);
 }
 
+/*Parsing if there is more than one arg. The function checks if the arg is
+an INT and add it at the bottom of the stack*/
 static void	ft_parse_args(int argc, char **argv, t_stack *stack)
 {
 	int			i;
@@ -66,6 +70,8 @@ static void	ft_parse_args(int argc, char **argv, t_stack *stack)
 	}
 }
 
+/*Parsing if there is only one arg between " ". The function checks
+if the arg is an INT and add it at the bottom of the stack*/
 static void	ft_parse_string(char *s, t_stack *stack)
 {
 	int			i;
@@ -90,6 +96,7 @@ static void	ft_parse_string(char *s, t_stack *stack)
 	ft_free_tab(tab_nb);
 }
 
+/*Arguments parsing and stack creation*/
 t_stack	*ft_parse(int argc, char **argv)
 {
 	t_stack	*stack_parse;

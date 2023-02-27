@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/25 08:44:45 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/27 10:24:45 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
+# include "../ft_printf/includes/ft_printf.h"
 # include <limits.h>
-# include <stdio.h>
 # include <unistd.h>
 
 /* ----------------STRUCTURE---------------- */
@@ -69,20 +69,6 @@ int		ft_find_index_max(t_lst *lst);
 int		ft_find_index_min(t_lst *lst);
 void	ft_index(t_lst *a, int size);
 
-/* ----------------PARSING---------------- */
-t_stack	*ft_parse(int argc, char **argv);
-
-/* ----------------STRUCTURES---------------- */
-void	ft_add_element_bottom(t_lst **a, t_lst *element);
-t_lst	*ft_create_element(int value);
-t_stack	*ft_create_stack(void);
-void	ft_free_stack(t_stack **stack);
-void	ft_free_lst(t_lst **lst);
-t_lst	*ft_lst_last(t_lst *stack);
-t_lst	*ft_lst_penultimate(t_lst *lst);
-int		ft_lst_size(t_lst **lst);
-int		ft_stack_size(t_stack **stack);
-
 /* ----------------MOVEMENTS---------------- */
 void	ft_push(t_lst **from, t_lst **to, char *move);
 void	ft_ra(t_stack *stack, t_move *move);
@@ -97,6 +83,9 @@ void	ft_rra_rb(t_stack *stack, t_move *move);
 void	ft_rrb(t_stack *stack, t_move *move);
 void	ft_swap(t_lst **lst, char *move);
 
+/* ----------------PARSING---------------- */
+t_stack	*ft_parse(int argc, char **argv);
+
 /* ----------------SORTING---------------- */
 void	ft_actions(t_stack *stack);
 void	ft_big_algo(t_stack *stack, t_move *move);
@@ -105,6 +94,17 @@ void	ft_position(t_stack *stack);
 void	ft_sort(t_stack *stack);
 void	ft_three_algo(t_stack *stack, t_move *move);
 int		main(int argc, char **argv);
+
+/* ----------------STRUCTURES---------------- */
+void	ft_add_element_bottom(t_lst **a, t_lst *element);
+t_lst	*ft_create_element(int value);
+t_stack	*ft_create_stack(void);
+void	ft_free_stack(t_stack **stack);
+void	ft_free_lst(t_lst **lst);
+t_lst	*ft_lst_last(t_lst *stack);
+t_lst	*ft_lst_penultimate(t_lst *lst);
+int		ft_lst_size(t_lst **lst);
+int		ft_stack_size(t_stack **stack);
 
 /* ----------------UTILS---------------- */
 int		ft_abs_val(int nb);

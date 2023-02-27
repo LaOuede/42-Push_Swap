@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   position.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:19:10 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/24 15:03:22 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/02/27 08:49:27 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ static void	ft_get_pos(t_lst *lst, int size)
 	}
 }
 
+/*This function gives a position for each element and then finds
+the best position for each element (from b) on stack a*/
 void	ft_position(t_stack *stack)
 {
 	ft_get_pos(stack->a, ft_lst_size(&stack->a));
