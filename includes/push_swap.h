@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/27 10:24:45 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:21:30 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ typedef enum flag
 
 typedef struct s_move
 {
-	char			*push;
 	char			*push_a;
 	char			*push_b;
+	char			*swap;
 	char			*swap_a;
 	char			*swap_b;
 	char			*rotate;

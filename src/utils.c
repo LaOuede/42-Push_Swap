@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 12:21:23 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/02/27 08:26:54 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/03/31 08:21:09 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_move	*ft_write_moves(void)
 	moves = ft_calloc(sizeof * moves, 1);
 	if (!moves)
 		return (NULL);
-	moves->push = "ss";
 	moves->push_a = "pa";
 	moves->push_b = "pb";
+	moves->swap = "ss";
 	moves->swap_a = "sa";
 	moves->swap_b = "sb";
 	moves->rotate = "rr";
