@@ -129,7 +129,7 @@ The Push Swap program operates with two stacks: stack A and stack B. Initially, 
       </tr>
       <tr>
         <td align="center">Sorting 5 values</td>
-        <td>2 movements max</td>
+        <td>12 movements max</td>
       </tr>
       <tr>
          <td align="center">Sorting 100 values</td>
