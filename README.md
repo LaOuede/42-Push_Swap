@@ -120,6 +120,28 @@ The Push Swap program operates with two stacks: stack A and stack B. Initially, 
       </tr>
 </table>
 
+- Movement restrictions
+	- Sorting 3 values:
+ 		- 3 movements max
+	- Sorting 5 values:
+ 		- 2 movements max
+	- Sorting 100 values:
+		- less than 700 actions = 5 points
+		- less than 900 = 4 points
+		- less than 1100 = 3 points 
+		- less than 1300 = 2 points 
+		- less than 1500 = 1 point 
+	- Sorting 500 values:
+		- less than 5500 actions = 5 points
+		- less than 7000 = 4 points 
+		- less than 8500 = 3 points 
+		- less than 10000 = 2 points
+		- less than 11500 = 1 point
+  
+- Score
+
+The project is marked out of 100 pts. The passing score is 80.
+
 ---
 
 <div align="center">
