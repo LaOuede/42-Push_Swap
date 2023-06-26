@@ -47,7 +47,7 @@ make
 ```
 - execution :
 ```bash
-./a.out <list of numbers>
+./push_swap <list of numbers>
 ```
 Numbers can be positive or negative integers.
 
