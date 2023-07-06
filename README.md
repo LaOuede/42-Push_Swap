@@ -41,22 +41,22 @@ I've acquired a lot of basic knowledge on C programming :
 
 <h3 align="left">Usage 🛠</h3>
 
-- compilation :
+1- compilation :
 ```bash
 make
 ```
-- execution :
+2- execution :
 ```bash
 ./push_swap <list of numbers>
 ```
 Numbers can be positive or negative integers.
 
-- return value :
+3- return value :
 
 If the arguments are valid, the program will output is a series of instructions or operations that need to be performed on the given stack of numbers in order to sort them in ascending order.
 Each instruction represents a specific operation on the stacks, such as swapping two numbers, rotating the stack, or pushing a number from one stack to another.
 
-- Visualizer :
+4- Visualizer :
 
 It's possible to see the rendering of movements by using this visualizer : [o-reo visualizer](https://github.com/o-reo/push_swap_visualizer)
 
