@@ -17,7 +17,7 @@ Go to [42 Québec](https://42quebec.com/) to discover the course ! 👈
 
 ---
 
-<h3 align="left">What I've learned</h3>
+<h3 align="left">What I've learned 📚</h3>
 
 I've acquired a lot of basic knowledge on C programming :
 - Problem-solving
@@ -31,7 +31,7 @@ I've acquired a lot of basic knowledge on C programming :
 
 ---
 
-<h3 align="left">If I had to do it all over again</h3>
+<h3 align="left">If I had to do it all over again 🗒</h3>
 
 - I chose to implement an algorythm based on economy of movement, moving each time the number that requires the fewest movements.
   So I would challenge myself by implementing a new algorythm based on "divide and conquer algorythm" which is more focused on time management.
@@ -39,7 +39,7 @@ I've acquired a lot of basic knowledge on C programming :
 
 ---
 
-<h3 align="left">Usage</h3>
+<h3 align="left">Usage 🛠</h3>
 
 - compilation :
 ```bash
@@ -64,7 +64,7 @@ It's possible to see the rendering of movements by using this visualizer : [o-re
 
 ---
 
-<h3 align="left">Rules of the project</h3>
+<h3 align="left">Rules of the project 📣</h3>
 
 The Push Swap program operates with two stacks: stack A and stack B. Initially, all numbers are placed in stack A, while stack B remains empty.
 
